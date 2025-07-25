@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfmpxw6jsmck3"]
+[gd_scene load_steps=8 format=3 uid="uid://dfmpxw6jsmck3"]
 
 [ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="1_maxla"]
 [ext_resource type="Script" uid="uid://d0gra1l7tm6re" path="res://scripts/egg.gd" id="1_qlus4"]
@@ -10,6 +10,14 @@ region = Rect2(0, 128, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34461"]
 radius = 16.0312
+
+[sub_resource type="Animation" id="Animation_34461"]
+resource_name = "crack_egg"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifgqj"]
+_data = {
+&"crack_egg": SubResource("Animation_34461")
+}
 
 [node name="Egg" type="Area2D" groups=["eggs"]]
 monitoring = false
@@ -23,3 +31,8 @@ texture = SubResource("AtlasTexture_qlus4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_34461")
 debug_color = Color(0.792, 0.168, 0.95, 0.4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ifgqj")
+}

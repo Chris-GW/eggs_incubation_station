@@ -3,7 +3,7 @@ extends Area2D
 
 @export var starting_egg_creature: EggCreature
 
-@onready var egg: Egg = $Egg
+@onready var egg: Egg = $EggPositionMarker/Egg
 @onready var hover_panel_container: PanelContainer = $HoverPanelContainer
 
 
@@ -32,10 +32,9 @@ func update_hover_info_panel() -> void:
 	if not egg:
 		return
 	%CreatureLabel.text = egg.egg_creature.name
-	%GrowthLabel.text = "Growth: %d/5" % egg.growth_stage
 	%AgeLabel.text = "Age: %d ticks" % egg.age_ticks
 	%TemperatureLabel.text = "Temperature: %0.1d °C" % egg.temperature
-	%LuxLabel.text = "Lux: %0.1d lx" % egg.growth_stage
+	%LuxLabel.text = "Lux: %0.1d lx" % egg.lux
 	%RotationTimerLabel.text = "Rotation: %2d ticks" % egg.rotation_ticks_left
 
 
@@ -44,3 +43,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	hover_panel_container.visible = false
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if (event is InputEventMouseButton 
+				and event.button_index == MOUSE_BUTTON_LEFT 
+				and event.is_pressed()
+				and event.double_click):
+		egg.play_crack_animation()

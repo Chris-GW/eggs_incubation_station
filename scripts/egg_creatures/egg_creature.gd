@@ -17,5 +17,5 @@ func get_creature_texture() -> Texture2D:
 	return sprites.get_frame_texture("creature", 0)
 
 
-func get_egg_texture(growth_stage: int = 0) -> Texture2D:
-	return sprites.get_frame_texture("egg", growth_stage)
+func get_egg_texture(frame_idx: int = 0) -> Texture2D:
+	return sprites.get_frame_texture("egg", frame_idx)

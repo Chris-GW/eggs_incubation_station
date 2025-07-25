@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://m7nn74deuc3m"]
+
+[ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_aqynv"]
+[ext_resource type="Script" uid="uid://dub3xbounti3x" path="res://scripts/devices/hanging_lamp.gd" id="1_nvrtj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwheu"]
+atlas = ExtResource("1_aqynv")
+region = Rect2(78, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grgei"]
+atlas = ExtResource("1_aqynv")
+region = Rect2(130, 0, 78, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqynv"]
+size = Vector2(36, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvrtj"]
+atlas = ExtResource("1_aqynv")
+region = Rect2(104, 0, 26, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvrtj"]
+size = Vector2(48, 66)
+
+[node name="HangingLamp" type="Area2D" groups=["devices"]]
+script = ExtResource("1_nvrtj")
+intensity = 1400.0
+
+[node name="LampSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 26)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_hwheu")
+
+[node name="SwitchButtonSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_grgei")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_aqynv")
+
+[node name="EggEffectArea2D" type="Area2D" parent="."]
+z_index = -2
+position = Vector2(0, 26)
+monitorable = false
+
+[node name="LampBeamSprite2D" type="Sprite2D" parent="EggEffectArea2D"]
+position = Vector2(0, 44)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_nvrtj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EggEffectArea2D"]
+position = Vector2(0, 39)
+shape = SubResource("RectangleShape2D_nvrtj")
+debug_color = Color(0.639216, 0.52549, 0, 0.235294)
+
+[node name="HoverPanelContainer" type="PanelContainer" parent="."]
+z_index = 5
+offset_left = 38.0
+offset_top = -49.0
+offset_right = 185.0
+offset_bottom = 28.0
+metadata/_edit_group_ = true
+
+[node name="BoxContainer" type="BoxContainer" parent="HoverPanelContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="NameLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
+layout_mode = 2
+text = "Lamp"
+
+[node name="DescriptionLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
+layout_mode = 2
+text = "Emits light for eggs"
+
+[node name="IntensityLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Intensity: 65"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
