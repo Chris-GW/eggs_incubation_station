@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://m7nn74deuc3m"]
+[gd_scene load_steps=9 format=3 uid="uid://m7nn74deuc3m"]
 
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_aqynv"]
 [ext_resource type="Script" uid="uid://dub3xbounti3x" path="res://scripts/devices/hanging_lamp.gd" id="1_nvrtj"]
+[ext_resource type="Texture2D" uid="uid://bkuwou1loylki" path="res://assets/devices/2d_lights_and_shadows_neutral_point_light.webp" id="3_hwheu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwheu"]
 atlas = ExtResource("1_aqynv")
@@ -14,12 +15,12 @@ region = Rect2(130, 0, 78, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqynv"]
 size = Vector2(36, 102)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hwheu"]
+polygon = PackedVector2Array(-22, 48, -22, 38, -20, 34, -18, 28, -16, 24, -14, 20, -12, 16, -9, 14, -4, 12, 4, 12, 10, 14, 12, 16, 14, 20, 16, 24, 18, 28, 20, 34, 22, 38, 22, 48, 20, 48, 20, 38, 18, 34, 16, 28, 14, 24, 12, 20, 10, 16, 4, 14, -4, 14, -10, 16, -12, 20, -14, 24, -16, 28, -18, 34, -20, 38, -20, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvrtj"]
 atlas = ExtResource("1_aqynv")
 region = Rect2(104, 0, 26, 26)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvrtj"]
-size = Vector2(48, 66)
 
 [node name="HangingLamp" type="Area2D" groups=["devices"]]
 script = ExtResource("1_nvrtj")
@@ -37,23 +38,34 @@ texture = SubResource("AtlasTexture_grgei")
 hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_aqynv")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, -8)
+occluder = SubResource("OccluderPolygon2D_hwheu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 12)
+color = Color(0.631373, 0.588235, 0.341176, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("3_hwheu")
 
 [node name="EggEffectArea2D" type="Area2D" parent="."]
 z_index = -2
 position = Vector2(0, 26)
 monitorable = false
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggEffectArea2D"]
+polygon = PackedVector2Array(-20, 4, -20, 14, -70, 84, -61, 90, -50, 95, -36, 101, -16, 105, 3, 106, 21, 105, 36, 100, 52, 93, 70, 84, 20, 14, 20, 4)
+
 [node name="LampBeamSprite2D" type="Sprite2D" parent="EggEffectArea2D"]
+visible = false
 position = Vector2(0, 44)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_nvrtj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EggEffectArea2D"]
-position = Vector2(0, 39)
-shape = SubResource("RectangleShape2D_nvrtj")
-debug_color = Color(0.639216, 0.52549, 0, 0.235294)
 
 [node name="HoverPanelContainer" type="PanelContainer" parent="."]
 z_index = 5

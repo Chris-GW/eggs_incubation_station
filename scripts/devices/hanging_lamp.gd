@@ -5,6 +5,7 @@ extends Area2D
 
 @onready var switch_button_sprite_2d: Sprite2D = $SwitchButtonSprite2D
 @onready var egg_effect_area_2d: Area2D = $EggEffectArea2D
+@onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var hover_panel_container: PanelContainer = $HoverPanelContainer
 
 var effected_eggs: Array[Egg] = []
@@ -48,7 +49,7 @@ func apply_heat_to(egg: Egg) -> void:
 
 func get_temperature_for(egg: Egg) -> float:
 	var distance := self.global_position.distance_to(egg.global_position)
-	var max_distance := 112.0
+	var max_distance := 128.0
 	return intensity * (1.0 - distance / max_distance)
 
 
@@ -57,6 +58,7 @@ func set_enabled(_enabled: bool) -> void:
 	enabled = _enabled
 	if is_node_ready():
 		egg_effect_area_2d.visible = enabled
+		point_light_2d.enabled = enabled
 		if should_animate_switch:
 			play_switch_animation(enabled)
 
@@ -70,11 +72,9 @@ func play_switch_animation(switch_to: bool) -> void:
 
 func _on_mouse_entered() -> void:
 	hover_panel_container.visible = true
-	egg_effect_area_2d.visible = true
 
 func _on_mouse_exited() -> void:
 	hover_panel_container.visible = false
-	egg_effect_area_2d.visible = enabled
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -87,6 +87,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				and event.button_index == MOUSE_BUTTON_LEFT
 				and event.is_pressed()):
 		is_dragging = true
+		egg_effect_area_2d.visible = true
 
 
 func _input(event: InputEvent) -> void:
@@ -94,3 +95,4 @@ func _input(event: InputEvent) -> void:
 				and event.button_index == MOUSE_BUTTON_LEFT 
 				and event.is_released()):
 		is_dragging = false
+		egg_effect_area_2d.visible = enabled
