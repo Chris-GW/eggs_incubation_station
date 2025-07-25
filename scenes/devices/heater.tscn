@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb2c5mlyg7sy4"]
+
+[ext_resource type="Script" uid="uid://dgwv5xib3on4y" path="res://scripts/devices/heater.gd" id="1_yh6gp"]
+[ext_resource type="Texture2D" uid="uid://hwvdgaxokw01" path="res://icon.svg" id="2_8ycrt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yh6gp"]
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ycrt"]
+size = Vector2(64, 64)
+
+[node name="Heater" type="Area2D" groups=["devices"]]
+script = ExtResource("1_yh6gp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8ycrt")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -75.5
+offset_right = -37.5
+offset_bottom = -52.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "Heater"
+label_settings = SubResource("LabelSettings_yh6gp")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8ycrt")
+
+[node name="EggEffectArea2D" type="Area2D" parent="."]
+z_index = -2
+monitorable = false
+
+[node name="Polygon2D" type="Polygon2D" parent="EggEffectArea2D"]
+color = Color(1, 0, 0, 0.196078)
+polygon = PackedVector2Array(-128, -128, -32, -32, 32, -32, 128, -128)
+vertex_colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggEffectArea2D"]
+visible = false
+polygon = PackedVector2Array(32, -32, 128, -128, -128, -128, -32, -32)
+
+[node name="HoverPanelContainer" type="PanelContainer" parent="."]
+visible = false
+z_index = 5
+offset_left = 38.0
+offset_top = -65.0
+offset_right = 180.0
+offset_bottom = 12.0
+metadata/_edit_group_ = true
+
+[node name="BoxContainer" type="BoxContainer" parent="HoverPanelContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="NameLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
+layout_mode = 2
+text = "Heater"
+
+[node name="DescriptionLabel2" type="Label" parent="HoverPanelContainer/BoxContainer"]
+layout_mode = 2
+text = "Emits heat to eggs"
+
+[node name="IntensityLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Intensity: 65"
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

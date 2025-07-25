@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfyxn8l8uy0hm"]
+
+[ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dj04gpqp0lx15" path="res://scenes/incubation_station.tscn" id="2_0xm2m"]
+[ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="IncubationStation1" parent="Map" instance=ExtResource("2_0xm2m")]
+position = Vector2(160, 158)
+starting_egg_creature = ExtResource("3_1bvp3")
+
+[node name="IncubationStation2" parent="Map" instance=ExtResource("2_0xm2m")]
+position = Vector2(288, 160)
+starting_egg_creature = ExtResource("3_1bvp3")
+
+[node name="IncubationStation3" parent="Map" instance=ExtResource("2_0xm2m")]
+position = Vector2(416, 160)
+
+[node name="Heater" parent="Map" instance=ExtResource("3_h2yge")]
+position = Vector2(224, 248)
+intensity = 44.0
+
+[node name="GameTickTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="TickLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Ticks: 0"
+
+[connection signal="timeout" from="GameTickTimer" to="." method="_on_game_tick_timer_timeout"]

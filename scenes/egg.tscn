@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfmpxw6jsmck3"]
+
+[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="1_maxla"]
+[ext_resource type="Script" uid="uid://d0gra1l7tm6re" path="res://scripts/egg.gd" id="1_qlus4"]
+[ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="2_34461"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlus4"]
+atlas = ExtResource("1_maxla")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34461"]
+radius = 16.0312
+
+[node name="Egg" type="Area2D" groups=["eggs"]]
+monitoring = false
+script = ExtResource("1_qlus4")
+egg_creature = ExtResource("2_34461")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_qlus4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_34461")
+debug_color = Color(0.792, 0.168, 0.95, 0.4)

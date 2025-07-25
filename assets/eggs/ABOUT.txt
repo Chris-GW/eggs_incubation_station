@@ -1,0 +1,20 @@
+Eggs
+By Onocentaur
+https://onocentaur.itch.io
+March 2021
+
+Description 
+350+ pixel art eggs for your next virtual pet/match 3/farming/holiday themed game.
+
+This pack contains:
+	⁃	Over 350 16x16px eggs.
+	⁃	32 egg designs, 11 color variants.
+	⁃	2 different cracking animations for each egg.
+	⁃	Spritesheets for each color variant and cracking pattern.
+	⁃	Transparent PNGs.
+	⁃	Template files so you can color your own eggs.
+	⁃	Bonus: Letter & Number eggs.
+	⁃	Bonus: Incubator assets (nesting box and toggle-able lamp).
+	⁃	Bonus: 12 Animal assets.  
+
+Free to use for personal & professional projects.  Attribution appreciated.  If you use these assets in your project, let me know!  I look forward to seeing what you make.
