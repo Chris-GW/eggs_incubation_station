@@ -31,6 +31,7 @@ func post_game_tick() -> void:
 func update_hover_info_panel() -> void:
 	if not egg:
 		return
+	%CreatureLabel.text = egg.egg_creature.name
 	%GrowthLabel.text = "Growth: %d/5" % egg.growth_stage
 	%AgeLabel.text = "Age: %d ticks" % egg.age_ticks
 	%TemperatureLabel.text = "Temperature: %0.1d °C" % egg.temperature

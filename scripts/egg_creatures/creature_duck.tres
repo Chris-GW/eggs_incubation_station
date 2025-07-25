@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="EggCreature" load_steps=19 format=3 uid="uid://5hgtftfyu4uv"]
+
+[ext_resource type="Script" uid="uid://mtgmwpb24w7d" path="res://scripts/egg_creatures/egg_creature.gd" id="1_afqeq"]
+[ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="2_xghox"]
+[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="3_noha5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tujjs"]
+atlas = ExtResource("2_xghox")
+region = Rect2(36, 16, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8udm3"]
+atlas = ExtResource("3_noha5")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of1lw"]
+atlas = ExtResource("3_noha5")
+region = Rect2(16, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm4tp"]
+atlas = ExtResource("3_noha5")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2dje"]
+atlas = ExtResource("3_noha5")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asdrg"]
+atlas = ExtResource("3_noha5")
+region = Rect2(64, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6gta"]
+atlas = ExtResource("3_noha5")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7xna"]
+atlas = ExtResource("3_noha5")
+region = Rect2(96, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obhdn"]
+atlas = ExtResource("3_noha5")
+region = Rect2(112, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywac8"]
+atlas = ExtResource("3_noha5")
+region = Rect2(128, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh4a5"]
+atlas = ExtResource("3_noha5")
+region = Rect2(144, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ondfo"]
+atlas = ExtResource("3_noha5")
+region = Rect2(160, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii5a6"]
+atlas = ExtResource("3_noha5")
+region = Rect2(176, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyvwt"]
+atlas = ExtResource("3_noha5")
+region = Rect2(192, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2mle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tujjs")
+}],
+"loop": true,
+"name": &"creature",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8udm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of1lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm4tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2dje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asdrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6gta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7xna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obhdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywac8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh4a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ondfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii5a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyvwt")
+}],
+"loop": true,
+"name": &"egg",
+"speed": 5.0
+}]
+
+[resource]
+resource_name = "Duck"
+script = ExtResource("1_afqeq")
+name = "Duck"
+description = "A Duck can swim and wants it cool"
+sprites = SubResource("SpriteFrames_j2mle")
+ideal_temperature = 22.0
+ideal_lux = 24.0
+ideal_rotation_ticks = 20
+heat_rate = 3.0
+metadata/_custom_type_script = "uid://mtgmwpb24w7d"

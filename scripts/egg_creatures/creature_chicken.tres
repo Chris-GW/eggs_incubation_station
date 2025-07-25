@@ -1,66 +1,66 @@
 [gd_resource type="Resource" script_class="EggCreature" load_steps=19 format=3 uid="uid://igwpka7ehvvf"]
 
-[ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="1_yy3t2"]
-[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="2_32cp4"]
-[ext_resource type="Script" uid="uid://mtgmwpb24w7d" path="res://scripts/egg_creatures/egg_creature.gd" id="2_dhn1u"]
+[ext_resource type="Script" uid="uid://mtgmwpb24w7d" path="res://scripts/egg_creatures/egg_creature.gd" id="1_xcm1b"]
+[ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="2_mo5jv"]
+[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="3_fl7rx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhn1u"]
-atlas = ExtResource("1_yy3t2")
+atlas = ExtResource("2_mo5jv")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32cp4"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vevl"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ylw0"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(32, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kc4ei"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ehadk"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(64, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n487t"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(80, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7816f"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(96, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxj2j"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(112, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kippf"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(128, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxi2f"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(144, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37y0p"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(160, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mflv4"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(176, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65ui2"]
-atlas = ExtResource("2_32cp4")
+atlas = ExtResource("3_fl7rx")
 region = Rect2(192, 48, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_t6t6q"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3xbe"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -117,12 +117,12 @@ animations = [{
 
 [resource]
 resource_name = "Chicken"
-script = ExtResource("2_dhn1u")
+script = ExtResource("1_xcm1b")
 name = "Chicken"
 description = "A Chicken likes it warm and dark"
-sprites = SubResource("SpriteFrames_t6t6q")
-ideal_temperature = 32.0
-ideal_lux = 8.0
-ideal_rotation_ticks = 12
-heat_rate = 1.5
+sprites = SubResource("SpriteFrames_v3xbe")
+ideal_temperature = 41.0
+ideal_lux = 7.0
+ideal_rotation_ticks = 15
+heat_rate = 2.0
 metadata/_custom_type_script = "uid://mtgmwpb24w7d"
