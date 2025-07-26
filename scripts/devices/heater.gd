@@ -70,11 +70,10 @@ func _on_mouse_exited() -> void:
 	egg_effect_area_2d.visible = enabled
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if (event is InputEventMouseButton 
-				and event.button_index == MOUSE_BUTTON_LEFT 
-				and event.is_pressed()
-				and event.double_click):
+				and event.button_index == MOUSE_BUTTON_RIGHT 
+				and event.is_pressed()):
 		enabled = !enabled
 	
 	if (event is InputEventMouseButton 

@@ -20,8 +20,13 @@ func pre_game_tick() -> void:
 
 
 func next_game_tick() -> void:
-	if egg:
-		egg.age_ticks += 1
+	if not egg:
+		return
+	egg.age_ticks += 1
+	if egg and egg.is_happy_enough():
+		egg.growth_ticks += 1
+	if egg and egg.is_ready_to_hatch():
+		egg.hatch_egg()
 
 
 func post_game_tick() -> void:
@@ -34,8 +39,10 @@ func update_hover_info_panel() -> void:
 	%CreatureLabel.text = egg.egg_creature.name
 	%AgeLabel.text = "Age: %d ticks" % egg.age_ticks
 	%TemperatureLabel.text = "Temperature: %0.1d °C" % egg.temperature
-	%LuxLabel.text = "Lux: %0.1d lx" % egg.lux
-	%RotationTimerLabel.text = "Rotation: %2d ticks" % egg.rotation_ticks_left
+	%LightLevelLabel.text = "LightLevel: %s" % egg.light_level
+	%RotationTimerLabel.text = "last rotation: %4d ticks" % egg.ticks_since_last_rotation
+	%HappinessLabel.text = "Happiness: %2d/100" % egg.happiness
+	%GrowthLabel.text = "growth ticks: %4d" % egg.growth_ticks
 
 
 func _on_mouse_entered() -> void:
@@ -44,7 +51,7 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	hover_panel_container.visible = false
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if (event is InputEventMouseButton 
 				and event.button_index == MOUSE_BUTTON_LEFT 
 				and event.is_pressed()

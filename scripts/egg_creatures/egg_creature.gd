@@ -1,16 +1,29 @@
 class_name EggCreature
 extends Resource
 
+enum LightLevel { DARK, DIMM, BRIGHT, }
+
 @export var name: String
 @export var description: String
 @export var sprites: SpriteFrames
 
-@export var ideal_temperature: float
-@export var ideal_lux: float
-@export var ideal_rotation_ticks: int
+@export_category("Growth Conditions")
+## Acceptable temperature range (°C) where the egg remains happy.
+## Vector2(x = min_temperature, y = max_temperature)
+@export var preferred_temp_range: Vector2
+## Preferred ambient light level for optimal egg happiness
+@export var preferred_light_level: LightLevel
+## Ideal time (in ticks) between each required rotation for the egg to remain happy
+@export var preferred_rotation_interval: int
 
-## how quickly the egg can heat or cool (°C/tick)
+## How quickly the egg absorbs or loses heat (°C per tick)
 @export var heat_rate: float
+## Rate of happiness change per tick (positive or negative)
+@export var happiness_rate: float
+## Minimum happiness level (0–100) required for the egg to grow
+@export var happiness_threshold: float
+## Total time (in ticks) the egg needs to grow before it can hatch
+@export var growth_duration: int
 
 
 func get_creature_texture() -> Texture2D:

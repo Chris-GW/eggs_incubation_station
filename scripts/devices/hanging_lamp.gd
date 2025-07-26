@@ -43,14 +43,16 @@ func post_game_tick() -> void:
 
 
 func apply_heat_to(egg: Egg) -> void:
-	var temp_target := get_temperature_for(egg)
-	var difference := temp_target - egg.lux
-	egg.lux += difference
-
-func get_temperature_for(egg: Egg) -> float:
-	var distance := self.global_position.distance_to(egg.global_position)
-	var max_distance := 128.0
-	return intensity * (1.0 - distance / max_distance)
+	var max_distance := 110.0
+	var half_distance = max_distance / 2.0
+	var distance := egg_effect_area_2d.global_position.distance_to(egg.global_position)
+	if distance < half_distance:
+		if egg.light_level == EggCreature.LightLevel.DARK:
+			egg.light_level = EggCreature.LightLevel.DIMM
+		else:
+			egg.light_level = EggCreature.LightLevel.BRIGHT
+	if distance > half_distance:
+		egg.light_level = EggCreature.LightLevel.BRIGHT
 
 
 func set_enabled(_enabled: bool) -> void:
