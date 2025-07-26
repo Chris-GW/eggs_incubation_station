@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://m7nn74deuc3m"]
+[gd_scene load_steps=10 format=3 uid="uid://m7nn74deuc3m"]
 
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_aqynv"]
 [ext_resource type="Script" uid="uid://dub3xbounti3x" path="res://scripts/devices/hanging_lamp.gd" id="1_nvrtj"]
+[ext_resource type="Script" uid="uid://dtu8fhapwdl1m" path="res://scripts/devices/draggable.gd" id="2_grgei"]
 [ext_resource type="Texture2D" uid="uid://bkuwou1loylki" path="res://assets/devices/2d_lights_and_shadows_neutral_point_light.webp" id="3_hwheu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwheu"]
@@ -26,6 +27,11 @@ region = Rect2(104, 0, 26, 26)
 script = ExtResource("1_nvrtj")
 intensity = 1400.0
 
+[node name="Draggable" type="Node2D" parent="." node_paths=PackedStringArray("area_2d", "outline")]
+script = ExtResource("2_grgei")
+area_2d = NodePath("..")
+outline = NodePath("../Outline2D")
+
 [node name="LampSprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 26)
 scale = Vector2(2, 2)
@@ -37,8 +43,13 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_grgei")
 hframes = 3
 
+[node name="Outline2D" type="Line2D" parent="."]
+points = PackedVector2Array(-18, -50, 18, -50, 18, 52, -18, 52)
+closed = true
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_aqynv")
 
@@ -55,7 +66,7 @@ texture = ExtResource("3_hwheu")
 
 [node name="EggEffectArea2D" type="Area2D" parent="."]
 z_index = -2
-position = Vector2(0, 26)
+position = Vector2(0, 24)
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggEffectArea2D"]

@@ -9,17 +9,11 @@ const AMBIENT_TEMP = 20.0
 @onready var hover_panel_container: PanelContainer = $HoverPanelContainer
 
 var effected_eggs: Array[Egg] = []
-var is_dragging := false
 
 
 func _ready() -> void:
 	hover_panel_container.visible = false
 	%IntensityLabel.text = "Intensity: %d" % intensity
-
-
-func _process(delta: float) -> void:
-	if is_dragging:
-		global_position = global_position.lerp(get_global_mouse_position(), delta * 40.0)
 
 
 func pre_game_tick() -> void:
@@ -75,15 +69,3 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				and event.button_index == MOUSE_BUTTON_RIGHT 
 				and event.is_pressed()):
 		enabled = !enabled
-	
-	if (event is InputEventMouseButton 
-				and event.button_index == MOUSE_BUTTON_LEFT
-				and event.is_pressed()):
-		is_dragging = true
-
-
-func _input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton 
-				and event.button_index == MOUSE_BUTTON_LEFT 
-				and event.is_released()):
-		is_dragging = false

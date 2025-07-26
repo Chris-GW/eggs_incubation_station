@@ -9,19 +9,11 @@ extends Area2D
 @onready var hover_panel_container: PanelContainer = $HoverPanelContainer
 
 var effected_eggs: Array[Egg] = []
-var is_dragging := false
 
 
 func _ready() -> void:
 	hover_panel_container.visible = false
 	%IntensityLabel.text = "Intensity: %d" % intensity
-
-
-func _process(delta: float) -> void:
-	if is_dragging:
-		var global_mouse_position := get_global_mouse_position() \
-				.snapped(Vector2(5.0, 5.0))
-		global_position = global_position.lerp(global_mouse_position, delta * 40.0)
 
 
 func pre_game_tick() -> void:
@@ -59,7 +51,6 @@ func set_enabled(_enabled: bool) -> void:
 	var should_animate_switch := enabled != _enabled
 	enabled = _enabled
 	if is_node_ready():
-		egg_effect_area_2d.visible = enabled
 		point_light_2d.enabled = enabled
 		if should_animate_switch:
 			play_switch_animation(enabled)
@@ -84,17 +75,3 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				and event.button_index == MOUSE_BUTTON_RIGHT 
 				and event.is_pressed()):
 		enabled = !enabled
-	
-	if (event is InputEventMouseButton 
-				and event.button_index == MOUSE_BUTTON_LEFT
-				and event.is_pressed()):
-		is_dragging = true
-		egg_effect_area_2d.visible = true
-
-
-func _input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton 
-				and event.button_index == MOUSE_BUTTON_LEFT 
-				and event.is_released()):
-		is_dragging = false
-		egg_effect_area_2d.visible = enabled

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://brnwpac523qw7"]
+[gd_scene load_steps=6 format=3 uid="uid://brnwpac523qw7"]
 
 [ext_resource type="Script" uid="uid://du7dbvmqccyja" path="res://scripts/devices/cooler.gd" id="1_or2mw"]
+[ext_resource type="Script" uid="uid://dtu8fhapwdl1m" path="res://scripts/devices/draggable.gd" id="2_jplme"]
 [ext_resource type="Texture2D" uid="uid://hwvdgaxokw01" path="res://icon.svg" id="2_ooqtr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yh6gp"]
@@ -13,6 +14,11 @@ size = Vector2(64, 64)
 
 [node name="Cooler" type="Area2D" groups=["devices"]]
 script = ExtResource("1_or2mw")
+
+[node name="Draggable" type="Node2D" parent="." node_paths=PackedStringArray("area_2d", "outline")]
+script = ExtResource("2_jplme")
+area_2d = NodePath("..")
+outline = NodePath("../Outline2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0.504428, 0.943027, 1)
@@ -35,6 +41,12 @@ size_flags_horizontal = 0
 text = "Cooler"
 label_settings = SubResource("LabelSettings_yh6gp")
 metadata/_edit_use_anchors_ = true
+
+[node name="Outline2D" type="Line2D" parent="."]
+points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+closed = true
+width = 2.0
+default_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8ycrt")
