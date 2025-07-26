@@ -16,16 +16,17 @@ func _ready() -> void:
 
 
 func pre_game_tick() -> void:
-	pass
+	if egg:
+		egg.light_level = EggCreature.LightLevel.DARK
 
 
 func next_game_tick() -> void:
 	if not egg:
 		return
 	egg.age_ticks += 1
-	if egg and egg.is_happy_enough():
+	if egg.is_happy_enough():
 		egg.growth_ticks += 1
-	if egg and egg.is_ready_to_hatch():
+	if egg.is_ready_to_hatch():
 		egg.hatch_egg()
 
 
@@ -50,10 +51,3 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	hover_panel_container.visible = false
-
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if (event is InputEventMouseButton 
-				and event.button_index == MOUSE_BUTTON_LEFT 
-				and event.is_pressed()
-				and event.double_click):
-		egg.play_crack_animation()
