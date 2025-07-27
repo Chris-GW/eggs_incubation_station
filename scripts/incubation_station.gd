@@ -2,6 +2,7 @@ class_name IncubationStation
 extends Area2D
 
 const AMBIENT_TEMP = 20.0
+const EGG = preload("res://scenes/egg.tscn")
 
 @export var starting_egg_creature: EggCreature
 
@@ -36,6 +37,8 @@ func post_game_tick() -> void:
 			egg.growth_ticks += 1
 		if egg.is_ready_to_hatch():
 			egg.hatch_egg()
+			await get_tree().create_timer(2.0).timeout
+			$PlaceEggButton.visible = true
 	update_hover_info_panel()
 
 
@@ -63,3 +66,17 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	hover_panel_container.visible = false
+
+
+func _on_place_egg_button_pressed() -> void:
+	$CanvasLayer/EggReward.randomize_choices()
+	$CanvasLayer.visible = true
+	$PlaceEggButton.visible = false
+
+
+func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
+	egg = EGG.instantiate()
+	egg.egg_creature = creature
+	$EggPositionMarker.add_child(egg)
+	$CanvasLayer.visible = false
+	$PlaceEggButton.visible = false

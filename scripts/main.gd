@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var game_tick_timer: Timer = $GameTickTimer
 
+static var money := 0
 var game_ticks := 0
 
 

@@ -35,6 +35,7 @@ folder_colors={
 
 eggs=""
 devices=""
+incubation_station=""
 
 [layer_names]
 

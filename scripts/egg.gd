@@ -59,4 +59,5 @@ func hatch_egg() -> void:
 	hatching_egg.get_node("CreatureSprite").texture = egg_creature.get_creature_texture()
 	self.add_sibling(hatching_egg)
 	hatching_egg.global_position = global_position
+	Main.money += 1
 	queue_free()
