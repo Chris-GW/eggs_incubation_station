@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dj04gpqp0lx15"]
+[gd_scene load_steps=15 format=3 uid="uid://bf1xxj7js717l"]
 
 [ext_resource type="Script" uid="uid://dqri55g4ymo54" path="res://scripts/incubation_station.gd" id="1_ck6wp"]
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_fqn86"]

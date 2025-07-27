@@ -6,7 +6,7 @@ const HATCHING_EGG = preload("res://scenes/hatching_egg.tscn")
 @export var egg_creature: EggCreature : set = set_egg_creature
 
 @export var age_ticks := 0
-@export var temperature := 0.0
+@export var temperature := IncubationStation.AMBIENT_TEMP
 @export var light_level := EggCreature.LightLevel.DARK
 @export var ticks_since_last_rotation := 0
 @export var happiness := 0.0
@@ -59,4 +59,5 @@ func hatch_egg() -> void:
 	hatching_egg.get_node("CreatureSprite").texture = egg_creature.get_creature_texture()
 	self.add_sibling(hatching_egg)
 	hatching_egg.global_position = global_position
+	Main.money += 1
 	queue_free()

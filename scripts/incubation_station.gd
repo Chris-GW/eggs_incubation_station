@@ -1,10 +1,17 @@
 class_name IncubationStation
 extends Area2D
 
+signal egg_selection_wanted(incubation_station: IncubationStation)
+
+const AMBIENT_TEMP = 20.0
+const EGG = preload("res://scenes/egg.tscn")
+
 @export var starting_egg_creature: EggCreature
 
 @onready var egg: Egg = $EggPositionMarker/Egg
 @onready var hover_panel_container: Panel = $Panel
+
+var previous_egg_temp := AMBIENT_TEMP
 
 
 func _ready() -> void:
@@ -19,21 +26,32 @@ func _process(delta: float) -> void:
 		$Panel/Temperature/Marker.rotation = $EggPositionMarker/Egg.temperature * delta * 3
 	
 func pre_game_tick() -> void:
-	pass
-
+	if egg:
+		egg.age_ticks += 1
+		egg.light_level = EggCreature.LightLevel.DARK
+		previous_egg_temp = egg.temperature
+		egg.temperature = AMBIENT_TEMP
 
 func next_game_tick() -> void:
-	if not egg:
-		return
-	egg.age_ticks += 1
-	if egg and egg.is_happy_enough():
-		egg.growth_ticks += 1
-	if egg and egg.is_ready_to_hatch():
-		egg.hatch_egg()
-
+	pass
 
 func post_game_tick() -> void:
+	if egg:
+		apply_temperature_change()
+		if egg.is_happy_enough():
+			egg.growth_ticks += 1
+		if egg.is_ready_to_hatch():
+			egg.hatch_egg()
+			await get_tree().create_timer(2.0).timeout
+			$PlaceEggButton.visible = true
 	update_hover_info_panel()
+
+
+func apply_temperature_change() -> void:
+	var max_change := egg.egg_creature.heat_rate
+	var difference := egg.temperature - previous_egg_temp
+	if abs(difference) > max_change:
+		egg.temperature = previous_egg_temp + sign(difference) * max_change
 
 
 func update_hover_info_panel() -> void:
@@ -61,9 +79,13 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	hover_panel_container.visible = false
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if (event is InputEventMouseButton 
-				and event.button_index == MOUSE_BUTTON_LEFT 
-				and event.is_pressed()
-				and event.double_click):
-		egg.play_crack_animation()
+
+func _on_place_egg_button_pressed() -> void:
+	egg_selection_wanted.emit(self)
+	$PlaceEggButton.visible = false
+
+
+func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
+	egg = EGG.instantiate()
+	egg.egg_creature = creature
+	$EggPositionMarker.add_child(egg)

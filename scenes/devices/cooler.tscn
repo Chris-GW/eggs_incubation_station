@@ -1,19 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://brnwpac523qw7"]
+[gd_scene load_steps=7 format=3 uid="uid://brnwpac523qw7"]
 
 [ext_resource type="Script" uid="uid://du7dbvmqccyja" path="res://scripts/devices/cooler.gd" id="1_or2mw"]
 [ext_resource type="Script" uid="uid://dtu8fhapwdl1m" path="res://scripts/devices/draggable.gd" id="2_jplme"]
-[ext_resource type="Texture2D" uid="uid://hwvdgaxokw01" path="res://icon.svg" id="2_ooqtr"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_yh6gp"]
-font_size = 32
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://wo53ph3a8glk" path="res://assets/devices/egg_cooler.png" id="3_ooqtr"]
+[ext_resource type="Texture2D" uid="uid://bkuwou1loylki" path="res://assets/devices/2d_lights_and_shadows_neutral_point_light.webp" id="4_jplme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ycrt"]
-size = Vector2(64, 64)
+size = Vector2(56, 56)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y3bqr"]
+polygon = PackedVector2Array(-25, -25, -25, 25, 25, 25, 25, -25, 27, -27, 27, 27, -27, 27, -27, -27)
 
 [node name="Cooler" type="Area2D" groups=["devices"]]
 script = ExtResource("1_or2mw")
+intensity = 44.0
 
 [node name="Draggable" type="Node2D" parent="." node_paths=PackedStringArray("area_2d", "outline")]
 script = ExtResource("2_jplme")
@@ -22,41 +22,39 @@ outline = NodePath("../Outline2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0.504428, 0.943027, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_ooqtr")
-
-[node name="Label" type="Label" parent="Sprite2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.5
-offset_top = -75.5
-offset_right = -37.5
-offset_bottom = -52.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-text = "Cooler"
-label_settings = SubResource("LabelSettings_yh6gp")
-metadata/_edit_use_anchors_ = true
+scale = Vector2(2, 2)
+texture = ExtResource("3_ooqtr")
 
 [node name="Outline2D" type="Line2D" parent="."]
-points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+points = PackedVector2Array(-27, -27, 27, -27, 27, 27, -27, 27)
 closed = true
 width = 2.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_8ycrt")
 
 [node name="EggEffectArea2D" type="Area2D" parent="."]
 z_index = -2
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EggEffectArea2D"]
-shape = SubResource("RectangleShape2D_8ycrt")
+[node name="Polygon2D" type="Polygon2D" parent="EggEffectArea2D"]
+color = Color(0, 0.466667, 1, 0.196078)
+polygon = PackedVector2Array(-128, -128, -26, -24, 26, -24, 128, -128)
+vertex_colors = PackedColorArray(0, 0.501333, 0.94, 0, 0, 0.501961, 0.941176, 1, 0, 0.501961, 0.941176, 1, 0, 0.501333, 0.94, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggEffectArea2D"]
+visible = false
+polygon = PackedVector2Array(26, -24, 128, -128, -128, -128, -26, -24)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0, 0.701961, 1, 1)
+energy = 0.5
+texture = ExtResource("4_jplme")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_y3bqr")
 
 [node name="HoverPanelContainer" type="PanelContainer" parent="."]
 visible = false

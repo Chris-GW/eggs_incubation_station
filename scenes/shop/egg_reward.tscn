@@ -1,0 +1,154 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2xwmhitg3r0s"]
+
+[ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="1_nx6l0"]
+[ext_resource type="Script" uid="uid://bvnirfjcn1rki" path="res://scripts/shop/egg_reward.gd" id="1_obqpo"]
+[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="2_kdgls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uwgt"]
+atlas = ExtResource("2_kdgls")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obqpo"]
+atlas = ExtResource("1_nx6l0")
+region = Rect2(0, 16, 18, 16)
+
+[node name="EggReward" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.5
+offset_top = -102.5
+offset_right = 291.5
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_obqpo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 20
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Choice1" type="VBoxContainer" parent="MarginContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Container/Choice1"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Chicken"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Container/Choice1"]
+layout_mode = 2
+alignment = 1
+
+[node name="EggTextureRect" type="TextureRect" parent="MarginContainer/Container/Choice1/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6uwgt")
+stretch_mode = 5
+
+[node name="CreatureTextureRect" type="TextureRect" parent="MarginContainer/Container/Choice1/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_obqpo")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginContainer/Container/Choice1"]
+layout_mode = 2
+text = "choose"
+
+[node name="InformationLabel" type="Label" parent="MarginContainer/Container/Choice1"]
+layout_mode = 2
+text = "Temperature: 15-15
+Light Level: Dark
+Rotation interval: 15 "
+
+[node name="Choice2" type="VBoxContainer" parent="MarginContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Container/Choice2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Chicken"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Container/Choice2"]
+layout_mode = 2
+alignment = 1
+
+[node name="EggTextureRect" type="TextureRect" parent="MarginContainer/Container/Choice2/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6uwgt")
+stretch_mode = 5
+
+[node name="CreatureTextureRect" type="TextureRect" parent="MarginContainer/Container/Choice2/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_obqpo")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginContainer/Container/Choice2"]
+layout_mode = 2
+text = "choose"
+
+[node name="InformationLabel" type="Label" parent="MarginContainer/Container/Choice2"]
+layout_mode = 2
+text = "Temperature: 15-15
+Light Level: Dark
+Rotation interval: 15 "
+
+[node name="Choice3" type="VBoxContainer" parent="MarginContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Container/Choice3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Chicken"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Container/Choice3"]
+layout_mode = 2
+alignment = 1
+
+[node name="EggTextureRect" type="TextureRect" parent="MarginContainer/Container/Choice3/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6uwgt")
+stretch_mode = 5
+
+[node name="CreatureTextureRect" type="TextureRect" parent="MarginContainer/Container/Choice3/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_obqpo")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="MarginContainer/Container/Choice3"]
+layout_mode = 2
+text = "choose"
+
+[node name="InformationLabel" type="Label" parent="MarginContainer/Container/Choice3"]
+layout_mode = 2
+text = "Temperature: 15-15
+Light Level: Dark
+Rotation interval: 15 "
+
+[connection signal="pressed" from="MarginContainer/Container/Choice1/Button" to="." method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="MarginContainer/Container/Choice2/Button" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="MarginContainer/Container/Choice3/Button" to="." method="_on_button_pressed" binds= [2]]
