@@ -4,7 +4,7 @@ extends Node2D
 signal dragg_started
 signal dragg_ended
 
-const MAP_SNAP := 10.0
+const MAP_SNAP := 5.0
 const MAP_BOARDER := Vector2.ONE * 20.0
 const MIN_MAP_POSITION := Vector2.ZERO + MAP_BOARDER
 const MAX_MAP_POSITION := Vector2(640.0, 360.0) - MAP_BOARDER

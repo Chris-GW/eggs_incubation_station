@@ -60,7 +60,7 @@ region = Rect2(176, 16, 16, 16)
 atlas = ExtResource("3_2axbv")
 region = Rect2(192, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_v3xbe"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4m6e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -120,7 +120,7 @@ resource_name = "Bison"
 script = ExtResource("1_i4m6e")
 name = "Bison"
 description = "A Bison likes it hot"
-sprites = SubResource("SpriteFrames_v3xbe")
+sprites = SubResource("SpriteFrames_i4m6e")
 preferred_temp_range = Vector2(24, 38)
 preferred_light_level = 0
 preferred_rotation_interval = 16

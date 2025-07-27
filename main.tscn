@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfyxn8l8uy0hm"]
+[gd_scene load_steps=10 format=3 uid="uid://dfyxn8l8uy0hm"]
 
 [ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b7xwoymju70oo" path="res://scenes/incubation_station.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dd8oevjpleq1c" path="res://assets/egg_bg_game_jam_July_2025.png" id="2_efxa6"]
 [ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="3_h2yge"]
-[ext_resource type="Resource" uid="uid://5hgtftfyu4uv" path="res://scripts/egg_creatures/creature_duck.tres" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://m7nn74deuc3m" path="res://scenes/devices/hanging_lamp.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://brnwpac523qw7" path="res://scenes/devices/cooler.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://dv57jw1jlbgw" path="res://scenes/shop/device_shop.tscn" id="9_kek77"]
@@ -37,22 +36,21 @@ polygon = PackedVector2Array(-48, -56, 64, -56, 120, -40, 152, -24, 184, 0, 208,
 [node name="Map" type="Node2D" parent="."]
 
 [node name="IncubationStation1" parent="Map" instance=ExtResource("2_0xm2m")]
-position = Vector2(160, 158)
+position = Vector2(160, 150)
 starting_egg_creature = ExtResource("3_1bvp3")
 
 [node name="IncubationStation2" parent="Map" instance=ExtResource("2_0xm2m")]
-position = Vector2(288, 160)
-starting_egg_creature = ExtResource("4_lquwl")
+position = Vector2(300, 150)
 
 [node name="Heater" parent="Map" instance=ExtResource("3_h2yge")]
-position = Vector2(160, 225)
-
-[node name="HangingLamp" parent="Map" instance=ExtResource("6_7mycd")]
-position = Vector2(160, 64)
+position = Vector2(160, 230)
 
 [node name="Cooler" parent="Map" instance=ExtResource("7_272bh")]
-position = Vector2(288, 216)
+position = Vector2(340, 220)
 enabled = false
+
+[node name="HangingLamp" parent="Map" instance=ExtResource("6_7mycd")]
+position = Vector2(160, 50)
 
 [node name="GameTickTimer" type="Timer" parent="."]
 wait_time = 0.5

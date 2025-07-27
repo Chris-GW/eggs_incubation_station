@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="2_btf7q"]
 [ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="3_vsl3l"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_21i8b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_56myv"]
 atlas = ExtResource("2_btf7q")
-region = Rect2(0, 32, 18, 16)
+region = Rect2(18, 32, 18, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbjme"]
 atlas = ExtResource("3_vsl3l")
@@ -64,7 +64,7 @@ region = Rect2(192, 288, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_21i8b")
+"texture": SubResource("AtlasTexture_56myv")
 }],
 "loop": true,
 "name": &"creature",
