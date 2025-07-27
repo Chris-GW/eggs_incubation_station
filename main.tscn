@@ -34,6 +34,7 @@ position = Vector2(160, 64)
 
 [node name="HangingLamp2" parent="Map" instance=ExtResource("6_7mycd")]
 position = Vector2(416, 56)
+enabled = false
 
 [node name="Cooler" parent="Map" instance=ExtResource("7_272bh")]
 position = Vector2(416, 248)

@@ -27,23 +27,23 @@ func next_game_tick() -> void:
 	if not enabled:
 		return
 	for egg in effected_eggs:
-		apply_heat_to(egg)
+		apply_light_to(egg)
 
 
 func post_game_tick() -> void:
 	pass
 
 
-func apply_heat_to(egg: Egg) -> void:
+func apply_light_to(egg: Egg) -> void:
 	var max_distance := 110.0
-	var half_distance = max_distance / 2.0
+	var half_distance = max_distance / 1.5
 	var distance := egg_effect_area_2d.global_position.distance_to(egg.global_position)
-	if distance < half_distance:
+	if distance > half_distance:
 		if egg.light_level == EggCreature.LightLevel.DARK:
 			egg.light_level = EggCreature.LightLevel.DIMM
 		else:
 			egg.light_level = EggCreature.LightLevel.BRIGHT
-	if distance > half_distance:
+	elif distance <= half_distance:
 		egg.light_level = EggCreature.LightLevel.BRIGHT
 
 
