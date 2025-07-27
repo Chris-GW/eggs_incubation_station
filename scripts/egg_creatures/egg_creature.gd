@@ -24,6 +24,7 @@ enum LightLevel { DARK, DIMM, BRIGHT, }
 @export var happiness_threshold: float
 ## Total time (in ticks) the egg needs to grow before it can hatch
 @export var growth_duration: int
+@export var sell_value := 1
 
 
 func get_creature_texture() -> Texture2D:

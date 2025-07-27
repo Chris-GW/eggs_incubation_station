@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="EggCreature" load_steps=19 format=3 uid="uid://sy6xyyw0ewiw"]
+
+[ext_resource type="Script" uid="uid://mtgmwpb24w7d" path="res://scripts/egg_creatures/egg_creature.gd" id="1_lvtc4"]
+[ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="2_0wn7x"]
+[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="3_q0ue5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvtc4"]
+atlas = ExtResource("2_0wn7x")
+region = Rect2(18, 48, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wn7x"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(0, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0ue5"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(16, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5gp4"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(32, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq2cd"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(48, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgogy"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(64, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4lfw"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(80, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqss7"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(96, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sgop"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(112, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7eej"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(128, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnk8b"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(144, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4qry"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(160, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc4sr"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(176, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuytv"]
+atlas = ExtResource("3_q0ue5")
+region = Rect2(192, 368, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvtc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvtc4")
+}],
+"loop": true,
+"name": &"creature",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wn7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0ue5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5gp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq2cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgogy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4lfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqss7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sgop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7eej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnk8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4qry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc4sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuytv")
+}],
+"loop": true,
+"name": &"egg",
+"speed": 5.0
+}]
+
+[resource]
+resource_name = "Monky"
+script = ExtResource("1_lvtc4")
+name = "Monky"
+description = "Likes to climb trees"
+sprites = SubResource("SpriteFrames_lvtc4")
+preferred_temp_range = Vector2(24, 34)
+preferred_light_level = 2
+preferred_rotation_interval = 16
+heat_rate = 1.0
+happiness_rate = 1.0
+happiness_threshold = 35.0
+growth_duration = 110
+sell_value = 1
+metadata/_custom_type_script = "uid://mtgmwpb24w7d"

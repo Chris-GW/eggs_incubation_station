@@ -1,0 +1,132 @@
+[gd_resource type="Resource" script_class="EggCreature" load_steps=19 format=3 uid="uid://0w0rfvtjyg4n"]
+
+[ext_resource type="Script" uid="uid://mtgmwpb24w7d" path="res://scripts/egg_creatures/egg_creature.gd" id="1_a2155"]
+[ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="2_2mx74"]
+[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="3_nyldv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2155"]
+atlas = ExtResource("2_2mx74")
+region = Rect2(36, 46, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mx74"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(0, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyldv"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(16, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu5v0"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(32, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh8ng"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(48, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8h2v"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(64, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed1oc"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(80, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpadn"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(96, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16pc8"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(112, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdfg7"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(128, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx4jy"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(144, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ebii"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(160, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqkv3"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(176, 480, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgcxx"]
+atlas = ExtResource("3_nyldv")
+region = Rect2(192, 480, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pksyp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2155")
+}],
+"loop": true,
+"name": &"creature",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mx74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyldv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu5v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh8ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8h2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed1oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpadn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16pc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdfg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx4jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ebii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqkv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgcxx")
+}],
+"loop": true,
+"name": &"egg",
+"speed": 5.0
+}]
+
+[resource]
+resource_name = "Snake"
+script = ExtResource("1_a2155")
+name = "Snake"
+description = "Pssssss"
+sprites = SubResource("SpriteFrames_pksyp")
+preferred_temp_range = Vector2(4, 12)
+preferred_light_level = 0
+preferred_rotation_interval = 16
+heat_rate = 0.5
+happiness_rate = 0.5
+happiness_threshold = 90.0
+growth_duration = 110
+sell_value = 4
+metadata/_custom_type_script = "uid://mtgmwpb24w7d"

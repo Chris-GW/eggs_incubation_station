@@ -16,15 +16,19 @@ var previous_egg_temp := AMBIENT_TEMP
 
 func _ready() -> void:
 	hover_panel_container.visible = false
+	var main: Main = get_tree().get_first_node_in_group("main")
+	self.egg_selection_wanted.connect(main._on_egg_selection_wanted)
 	if starting_egg_creature:
 		egg.set_egg_creature(starting_egg_creature)
 	else:
 		$PlaceEggButton.visible = true
 		egg.queue_free()
 
+
 func _process(delta: float) -> void:
 	if egg:
 		$Panel/Temperature/Marker.rotation = $EggPositionMarker/Egg.temperature * delta * 3
+	
 	
 func pre_game_tick() -> void:
 	if egg:

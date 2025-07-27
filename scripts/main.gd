@@ -5,13 +5,12 @@ const EGG = preload("res://scenes/egg.tscn")
 
 @onready var game_tick_timer: Timer = $GameTickTimer
 
-static var money := 0
+static var money := 1
 var game_ticks := 0
 
 
 func _ready() -> void:
-	for station: IncubationStation in get_tree().get_nodes_in_group("incubation_station"):
-		station.egg_selection_wanted.connect(_on_egg_selection_wanted)
+	pass
 
 
 func _physics_process(_delta: float) -> void:

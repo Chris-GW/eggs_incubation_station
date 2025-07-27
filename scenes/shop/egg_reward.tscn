@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2xwmhitg3r0s"]
+[gd_scene load_steps=7 format=3 uid="uid://d2xwmhitg3r0s"]
 
 [ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="1_nx6l0"]
 [ext_resource type="Script" uid="uid://bvnirfjcn1rki" path="res://scripts/shop/egg_reward.gd" id="1_obqpo"]
 [ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="2_kdgls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdgls"]
+atlas = ExtResource("1_nx6l0")
+region = Rect2(0, 64, 18, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6uwgt"]
 atlas = ExtResource("2_kdgls")
@@ -25,6 +29,7 @@ offset_bottom = 102.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_obqpo")
+hidden_creature_texture = SubResource("AtlasTexture_kdgls")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
