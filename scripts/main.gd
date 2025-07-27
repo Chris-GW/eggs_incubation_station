@@ -6,7 +6,7 @@ const EGG = preload("res://scenes/egg.tscn")
 @onready var game_tick_timer: Timer = $GameTickTimer
 @onready var audio_listener_2d: AudioListener2D = %AudioListener2D
 
-static var money := 0
+static var money := 1
 static var ticks_running := true
 
 var game_ticks := 0
@@ -33,7 +33,7 @@ func _on_game_tick_timer_timeout() -> void:
 		get_tree().call_group("devices", "post_game_tick")
 		game_ticks += 1
 		%TickLabel.text = "Ticks: %6d" % game_ticks
-		%MoneyLabel.text = "Money: %3d" % money
+		%MoneyLabel.text = "Money: %3d €" % money
 
 
 func _on_open_shop_button_pressed() -> void:

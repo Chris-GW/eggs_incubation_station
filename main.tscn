@@ -44,21 +44,14 @@ starting_egg_creature = ExtResource("3_1bvp3")
 position = Vector2(288, 160)
 starting_egg_creature = ExtResource("4_lquwl")
 
-[node name="IncubationStation3" parent="Map" instance=ExtResource("2_0xm2m")]
-position = Vector2(416, 160)
-
 [node name="Heater" parent="Map" instance=ExtResource("3_h2yge")]
 position = Vector2(160, 225)
 
 [node name="HangingLamp" parent="Map" instance=ExtResource("6_7mycd")]
 position = Vector2(160, 64)
 
-[node name="HangingLamp2" parent="Map" instance=ExtResource("6_7mycd")]
-position = Vector2(416, 56)
-enabled = false
-
 [node name="Cooler" parent="Map" instance=ExtResource("7_272bh")]
-position = Vector2(416, 248)
+position = Vector2(288, 216)
 enabled = false
 
 [node name="GameTickTimer" type="Timer" parent="."]
@@ -76,6 +69,9 @@ color = Color(0.625597, 0.625597, 0.625597, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -12.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
