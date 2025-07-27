@@ -127,6 +127,6 @@ preferred_rotation_interval = 16
 heat_rate = 1.0
 happiness_rate = 1.0
 happiness_threshold = 0.0
-growth_duration = 64
+growth_duration = 32
 sell_value = 3
 metadata/_custom_type_script = "uid://mtgmwpb24w7d"

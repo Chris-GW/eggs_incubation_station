@@ -68,6 +68,8 @@ func setup_creature_choice(choice_item: Control, creature: EggCreature) -> void:
 
 func _on_button_pressed(idx: int) -> void:
 	var creature: EggCreature = creature_choices.get(idx)
+	if not unlocked_creatures.has(creature.name):
+		Main.unlcked_creatures += 1
 	unlocked_creatures.set(creature.name, true)
 	creature_choosen.emit(creature)
 	self.visible = false

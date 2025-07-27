@@ -11,6 +11,9 @@ config_version=5
 [application]
 
 config/name="Eggs Incubation Station"
+config/description="Eggs Incubation Station it’s a 2D game where the player has to hatch eggs of rare creatures. Your goal is to hatch eggs and make your system automatic to handle it!
+
+The better your automation is, the faster you will process the eggs and earn points."
 run/main_scene="uid://dfyxn8l8uy0hm"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://b6vl0n5h27ml4"
@@ -20,9 +23,6 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
-window/size/window_width_override=1920
-window/size/window_height_override=1080
 window/stretch/mode="viewport"
 
 [file_customization]

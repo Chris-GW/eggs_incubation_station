@@ -75,26 +75,6 @@ volume_db = -12.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="OpenShopButton" type="Button" parent="CanvasLayer"]
-unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -96.0
-offset_top = 4.0
-offset_right = -3.0
-offset_bottom = 35.0
-grow_horizontal = 0
-text = "Open Shop"
-
-[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 440.0
-offset_top = 4.0
-offset_right = 542.0
-offset_bottom = 27.0
-text = "Money: 252 €"
-
 [node name="DeviceShop" parent="CanvasLayer" instance=ExtResource("9_kek77")]
 unique_name_in_owner = true
 visible = false
@@ -108,6 +88,32 @@ offset_left = -303.5
 offset_top = -122.5
 offset_right = 303.5
 offset_bottom = 122.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -332.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 45.0
+grow_horizontal = 0
+theme_override_constants/separation = 12
+
+[node name="UnlockedLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unlocked: 10/12"
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Money: 252 €"
+
+[node name="OpenShopButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Open Shop"
 
 [node name="ClearSpawnArea" type="PanelContainer" parent="CanvasLayer"]
 visible = false
@@ -126,6 +132,6 @@ layout_mode = 2
 text = "Clear pond area!"
 
 [connection signal="timeout" from="GameTickTimer" to="." method="_on_game_tick_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
 [connection signal="device_bought" from="CanvasLayer/DeviceShop" to="." method="_on_device_shop_device_bought"]
 [connection signal="creature_choosen" from="CanvasLayer/EggReward" to="." method="_on_egg_reward_creature_choosen"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
