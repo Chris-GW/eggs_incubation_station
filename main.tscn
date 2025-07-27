@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfyxn8l8uy0hm"]
+[gd_scene load_steps=12 format=3 uid="uid://dfyxn8l8uy0hm"]
 
 [ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dj04gpqp0lx15" path="res://scenes/incubation_station.tscn" id="2_0xm2m"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="3_h2yge"]
 [ext_resource type="Resource" uid="uid://5hgtftfyu4uv" path="res://scripts/egg_creatures/creature_duck.tres" id="4_lquwl"]
-[ext_resource type="Resource" uid="uid://dacvawr1rtowm" path="res://scripts/egg_creatures/creature_fish.tres" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://m7nn74deuc3m" path="res://scenes/devices/hanging_lamp.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://brnwpac523qw7" path="res://scenes/devices/cooler.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://dv57jw1jlbgw" path="res://scenes/shop/device_shop.tscn" id="9_kek77"]
@@ -45,7 +44,6 @@ starting_egg_creature = ExtResource("4_lquwl")
 
 [node name="IncubationStation3" parent="Map" instance=ExtResource("2_0xm2m")]
 position = Vector2(416, 160)
-starting_egg_creature = ExtResource("5_5vw27")
 
 [node name="Heater" parent="Map" instance=ExtResource("3_h2yge")]
 position = Vector2(143, 235)

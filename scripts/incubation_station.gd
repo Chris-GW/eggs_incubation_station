@@ -19,6 +19,7 @@ func _ready() -> void:
 	if starting_egg_creature:
 		egg.set_egg_creature(starting_egg_creature)
 	else:
+		$PlaceEggButton.visible = true
 		egg.queue_free()
 
 
