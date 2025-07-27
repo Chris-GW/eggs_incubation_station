@@ -15,12 +15,6 @@ radius = 16.0312
 monitoring = false
 script = ExtResource("1_qlus4")
 egg_creature = ExtResource("2_34461")
-age_ticks = null
-temperature = null
-light_level = null
-ticks_since_last_rotation = null
-happiness = null
-growth_ticks = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

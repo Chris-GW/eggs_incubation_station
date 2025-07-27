@@ -73,9 +73,9 @@ vertical = true
 layout_mode = 2
 text = "Heater"
 
-[node name="DescriptionLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
+[node name="DescriptionLabel2" type="Label" parent="HoverPanelContainer/BoxContainer"]
 layout_mode = 2
-text = "Emits cold to eggs"
+text = "Emits heat to eggs"
 
 [node name="IntensityLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
 unique_name_in_owner = true

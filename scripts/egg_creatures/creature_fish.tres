@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EggCreature" load_steps=19 format=3 uid="uid://dacvawr1rtowm"]
+[gd_resource type="Resource" script_class="EggCreature" load_steps=19 format=3 uid="uid://xfb8qlmbupqj"]
 
 [ext_resource type="Script" uid="uid://mtgmwpb24w7d" path="res://scripts/egg_creatures/egg_creature.gd" id="1_jwrdx"]
 [ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="2_v88br"]

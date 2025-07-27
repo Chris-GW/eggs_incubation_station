@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://bf1xxj7js717l"]
+[gd_scene load_steps=16 format=3 uid="uid://b7xwoymju70oo"]
 
 [ext_resource type="Script" uid="uid://dqri55g4ymo54" path="res://scripts/incubation_station.gd" id="1_ck6wp"]
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_fqn86"]
 [ext_resource type="PackedScene" uid="uid://dfmpxw6jsmck3" path="res://scenes/egg.tscn" id="2_y04yn"]
-[ext_resource type="Texture2D" uid="uid://3o80gnr55ms4" path="res://assets/UI_UX/Egg_Stats/Age.png" id="4_aha2a"]
-[ext_resource type="Texture2D" uid="uid://cfukon5gqi66w" path="res://assets/UI_UX/Egg_Stats/Temperature.png" id="4_psc80"]
-[ext_resource type="Texture2D" uid="uid://i0dpjo868ugx" path="res://assets/UI_UX/Egg_Stats/Temperature_marker.png" id="5_72j1t"]
-[ext_resource type="Texture2D" uid="uid://do2w2nrvwj27q" path="res://assets/UI_UX/Egg_Stats/Lamp.png" id="6_jtycx"]
-[ext_resource type="Texture2D" uid="uid://22832juljqeu" path="res://assets/UI_UX/Egg_Stats/Happy_face.png" id="7_4ef3w"]
-[ext_resource type="Texture2D" uid="uid://dtclbfnauia06" path="res://assets/UI_UX/Egg_Stats/Rotation.png" id="8_8vgin"]
-[ext_resource type="Texture2D" uid="uid://u3mn4govciwn" path="res://assets/UI_UX/Egg_Stats/Growth.png" id="10_haieb"]
+[ext_resource type="Texture2D" uid="uid://0bu6ryyy217l" path="res://assets/eggs/egg_questionmark.png" id="4_psc80"]
+[ext_resource type="Texture2D" uid="uid://3o80gnr55ms4" path="res://assets/UI_UX/Egg_Stats/Age.png" id="5_p4a3t"]
+[ext_resource type="Texture2D" uid="uid://cfukon5gqi66w" path="res://assets/UI_UX/Egg_Stats/Temperature.png" id="6_rggt2"]
+[ext_resource type="Texture2D" uid="uid://i0dpjo868ugx" path="res://assets/UI_UX/Egg_Stats/Temperature_marker.png" id="7_7moh4"]
+[ext_resource type="Texture2D" uid="uid://do2w2nrvwj27q" path="res://assets/UI_UX/Egg_Stats/Lamp.png" id="8_yanh1"]
+[ext_resource type="Texture2D" uid="uid://dtclbfnauia06" path="res://assets/UI_UX/Egg_Stats/Rotation.png" id="9_6jdl5"]
+[ext_resource type="Texture2D" uid="uid://22832juljqeu" path="res://assets/UI_UX/Egg_Stats/Happy_face.png" id="10_ts02c"]
+[ext_resource type="Texture2D" uid="uid://u3mn4govciwn" path="res://assets/UI_UX/Egg_Stats/Growth.png" id="11_5hlw3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y04yn"]
 atlas = ExtResource("1_fqn86")
@@ -26,7 +27,7 @@ region = Rect2(52, 0, 26, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck6wp"]
 size = Vector2(52, 50)
 
-[node name="IncubationStation" type="Area2D" groups=["devices"]]
+[node name="IncubationStation" type="Area2D" groups=["devices", "incubation_station"]]
 script = ExtResource("1_ck6wp")
 
 [node name="BoxSprite" type="Sprite2D" parent="."]
@@ -50,6 +51,23 @@ texture = SubResource("AtlasTexture_yplrf")
 visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_ck6wp")
+
+[node name="PlaceEggButton" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 26.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_psc80")
+icon_alignment = 1
+expand_icon = true
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -76,7 +94,7 @@ offset_left = 5.0
 offset_top = 26.0
 offset_right = 30.0
 offset_bottom = 52.0
-texture = ExtResource("4_aha2a")
+texture = ExtResource("5_p4a3t")
 expand_mode = 1
 stretch_mode = 4
 
@@ -97,7 +115,7 @@ offset_top = 35.8333
 offset_right = 96.6667
 offset_bottom = 127.833
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("4_psc80")
+texture = ExtResource("6_rggt2")
 stretch_mode = 4
 
 [node name="TemperatureLabel" type="Label" parent="Panel/Temperature"]
@@ -116,7 +134,7 @@ offset_top = 37.5
 offset_right = 64.2083
 offset_bottom = 71.5
 pivot_offset = Vector2(16.5, 25)
-texture = ExtResource("5_72j1t")
+texture = ExtResource("7_7moh4")
 expand_mode = 1
 stretch_mode = 4
 
@@ -127,7 +145,7 @@ offset_left = -1.5
 offset_top = 93.0
 offset_right = 32.5
 offset_bottom = 123.0
-texture = ExtResource("6_jtycx")
+texture = ExtResource("8_yanh1")
 expand_mode = 1
 stretch_mode = 4
 
@@ -147,7 +165,7 @@ offset_left = 3.0
 offset_top = 127.0
 offset_right = 26.0
 offset_bottom = 151.0
-texture = ExtResource("8_8vgin")
+texture = ExtResource("9_6jdl5")
 expand_mode = 1
 stretch_mode = 4
 
@@ -167,7 +185,7 @@ offset_left = 2.0
 offset_top = 155.0
 offset_right = 27.0
 offset_bottom = 181.0
-texture = ExtResource("7_4ef3w")
+texture = ExtResource("10_ts02c")
 expand_mode = 1
 stretch_mode = 4
 
@@ -187,7 +205,7 @@ offset_left = 2.0
 offset_top = 181.0
 offset_right = 27.0
 offset_bottom = 207.0
-texture = ExtResource("10_haieb")
+texture = ExtResource("11_5hlw3")
 expand_mode = 1
 stretch_mode = 4
 
@@ -203,3 +221,4 @@ text = "Growth ticks: 512"
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="PlaceEggButton" to="." method="_on_place_egg_button_pressed"]
