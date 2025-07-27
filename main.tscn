@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfyxn8l8uy0hm"]
+[gd_scene load_steps=13 format=3 uid="uid://dfyxn8l8uy0hm"]
 
 [ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dj04gpqp0lx15" path="res://scenes/incubation_station.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cj6bgb1vq6cuq" path="res://assets/egg_bg_game_jam_July_2025.png" id="2_efxa6"]
 [ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="3_h2yge"]
 [ext_resource type="Resource" uid="uid://5hgtftfyu4uv" path="res://scripts/egg_creatures/creature_duck.tres" id="4_lquwl"]
@@ -11,8 +12,26 @@
 [ext_resource type="PackedScene" uid="uid://dv57jw1jlbgw" path="res://scenes/shop/device_shop.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://d2xwmhitg3r0s" path="res://scenes/shop/egg_reward.tscn" id="10_4c57u"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(64, 110)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
+
+[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(315, 180)
+texture = ExtResource("2_efxa6")
+
+[node name="SpawnArea2D" type="Area2D" parent="."]
+position = Vector2(607, 96)
+metadata/_edit_group_ = true
+
+[node name="Marker2D" type="Marker2D" parent="SpawnArea2D"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea2D"]
+shape = SubResource("RectangleShape2D_4c57u")
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -64,10 +83,10 @@ anchor_mode = 0
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -109.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 47.0
+offset_left = -101.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 39.0
 grow_horizontal = 0
 text = "Open Shop"
 
@@ -85,6 +104,21 @@ offset_top = -122.5
 offset_right = 303.5
 offset_bottom = 122.5
 
+[node name="ClearSpawnArea" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_top = 158.0
+offset_bottom = 198.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/ClearSpawnArea"]
+layout_mode = 2
+text = "Clear Spawn Area!"
+
 [connection signal="timeout" from="GameTickTimer" to="." method="_on_game_tick_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
+[connection signal="device_bought" from="CanvasLayer/DeviceShop" to="." method="_on_device_shop_device_bought"]
 [connection signal="creature_choosen" from="CanvasLayer/EggReward" to="." method="_on_egg_reward_creature_choosen"]

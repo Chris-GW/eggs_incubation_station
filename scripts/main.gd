@@ -14,6 +14,11 @@ func _ready() -> void:
 		station.egg_selection_wanted.connect(_on_egg_selection_wanted)
 
 
+func _physics_process(_delta: float) -> void:
+	if $CanvasLayer/ClearSpawnArea.visible and not $SpawnArea2D.has_overlapping_areas():
+		$CanvasLayer/ClearSpawnArea.visible = false
+
+
 func _on_game_tick_timer_timeout() -> void:
 	get_tree().call_group("devices", "pre_game_tick")
 	get_tree().call_group("devices", "next_game_tick")
@@ -23,7 +28,10 @@ func _on_game_tick_timer_timeout() -> void:
 
 
 func _on_open_shop_button_pressed() -> void:
-	%DeviceShop.visible = true
+	if $SpawnArea2D.has_overlapping_areas():
+		$CanvasLayer/ClearSpawnArea.visible = true
+	else:
+		%DeviceShop.visible = true
 
 
 var current_station: IncubationStation
@@ -36,3 +44,8 @@ func _on_egg_selection_wanted(incubation_station: IncubationStation) -> void:
 
 func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
 	current_station._on_egg_reward_creature_choosen(creature)
+
+
+func _on_device_shop_device_bought(device: Node2D) -> void:
+	$Map.add_child(device)
+	device.global_position = %Marker2D.global_position

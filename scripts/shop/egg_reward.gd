@@ -47,3 +47,4 @@ func setup_creature_choice(choice_item: Control, creature: EggCreature) -> void:
 func _on_button_pressed(idx: int) -> void:
 	var creature: EggCreature = creature_choices.get(idx)
 	creature_choosen.emit(creature)
+	self.visible = false

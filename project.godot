@@ -41,6 +41,7 @@ incubation_station=""
 
 2d_physics/layer_2="egg_layer"
 2d_physics/layer_3="device_layer"
+2d_physics/layer_4="station_layer"
 
 [physics]
 
