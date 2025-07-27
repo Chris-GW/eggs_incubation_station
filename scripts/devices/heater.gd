@@ -40,7 +40,7 @@ func apply_heat_to(egg: Egg) -> void:
 	var difference := temp_target - egg.temperature
 	if abs(difference) <= max_change:
 		egg.temperature = temp_target
-	else:
+	elif egg.temperature < 30.0:
 		egg.temperature += sign(difference) * max_change
 
 func get_temperature_for(egg: Egg) -> float:

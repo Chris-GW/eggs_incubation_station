@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfyxn8l8uy0hm"]
+[gd_scene load_steps=9 format=3 uid="uid://dfyxn8l8uy0hm"]
 
 [ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dj04gpqp0lx15" path="res://scenes/incubation_station.tscn" id="2_0xm2m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://5hgtftfyu4uv" path="res://scripts/egg_creatures/creature_duck.tres" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://m7nn74deuc3m" path="res://scenes/devices/hanging_lamp.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://brnwpac523qw7" path="res://scenes/devices/cooler.tscn" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://biffo85pl1gp" path="res://assets/UI_UX/Egg_Stats/Clock_ticks.png" id="8_5vw27"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
@@ -25,11 +26,11 @@ starting_egg_creature = ExtResource("4_lquwl")
 position = Vector2(416, 160)
 
 [node name="Heater" parent="Map" instance=ExtResource("3_h2yge")]
-position = Vector2(224, 248)
+position = Vector2(200, 245)
 intensity = 44.0
 
 [node name="HangingLamp" parent="Map" instance=ExtResource("6_7mycd")]
-position = Vector2(160, 64)
+position = Vector2(161, 42)
 
 [node name="HangingLamp2" parent="Map" instance=ExtResource("6_7mycd")]
 position = Vector2(416, 56)
@@ -41,10 +42,22 @@ position = Vector2(416, 248)
 wait_time = 0.5
 autostart = true
 
-[node name="TickLabel" type="Label" parent="."]
+[node name="Ticks" type="TextureRect" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+texture = ExtResource("8_5vw27")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TickLabel" type="Label" parent="Ticks"]
 unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 0
+offset_left = 42.0
+offset_top = 10.0
+offset_right = 99.0
+offset_bottom = 33.0
 text = "Ticks: 0"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

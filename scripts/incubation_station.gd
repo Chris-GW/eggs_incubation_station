@@ -4,7 +4,7 @@ extends Area2D
 @export var starting_egg_creature: EggCreature
 
 @onready var egg: Egg = $EggPositionMarker/Egg
-@onready var hover_panel_container: PanelContainer = $HoverPanelContainer
+@onready var hover_panel_container: Panel = $Panel
 
 
 func _ready() -> void:
@@ -14,7 +14,10 @@ func _ready() -> void:
 	else:
 		egg.queue_free()
 
-
+func _process(delta: float) -> void:
+	if egg:
+		$Panel/Temperature/Marker.rotation = $EggPositionMarker/Egg.temperature * delta * 3
+	
 func pre_game_tick() -> void:
 	pass
 
@@ -36,13 +39,20 @@ func post_game_tick() -> void:
 func update_hover_info_panel() -> void:
 	if not egg:
 		return
-	%CreatureLabel.text = egg.egg_creature.name
-	%AgeLabel.text = "Age: %d ticks" % egg.age_ticks
-	%TemperatureLabel.text = "Temperature: %0.1d °C" % egg.temperature
-	%LightLevelLabel.text = "LightLevel: %s" % egg.light_level
-	%RotationTimerLabel.text = "last rotation: %4d ticks" % egg.ticks_since_last_rotation
-	%HappinessLabel.text = "Happiness: %2d/100" % egg.happiness
-	%GrowthLabel.text = "growth ticks: %4d" % egg.growth_ticks
+	
+	$Panel/CreatureLabel.text = egg.egg_creature.name
+	$Panel/Age/AgeLabel.text = "Age: %d ticks" % egg.age_ticks
+	$Panel/Temperature/TemperatureLabel.text = "%0.1d °C" % egg.temperature
+	$Panel/LightLevel/LightLevelLabel.text = "LightLevel: %s" % egg.light_level
+	$Panel/RotationTimer/RotationTimerLabel.text = "Last rotation: %4d ticks" % egg.ticks_since_last_rotation
+	$Panel/Hapinnes/HappinessLabel.text = "Happiness: %2d/100" % egg.happiness
+	if egg.happiness > 50:
+		$Panel/Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Happy_face.png")
+	elif egg.happiness == 50:
+		$Panel/Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Neutral_face.png")
+	else:
+		$Panel/Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Angry_face.png")
+	$Panel/Growth/GrowthLabel.text = "Growth ticks: %4d" % egg.growth_ticks
 
 
 func _on_mouse_entered() -> void:
