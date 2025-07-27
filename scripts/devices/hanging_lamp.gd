@@ -35,7 +35,7 @@ func post_game_tick() -> void:
 
 
 func apply_light_to(egg: Egg) -> void:
-	var max_distance := 110.0
+	var max_distance := 120.0
 	var half_distance = max_distance / 1.5
 	var distance := egg_effect_area_2d.global_position.distance_to(egg.global_position)
 	if distance > half_distance:

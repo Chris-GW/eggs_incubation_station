@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv57jw1jlbgw"]
+
+[ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="1_bfki1"]
+[ext_resource type="PackedScene" uid="uid://brnwpac523qw7" path="res://scenes/devices/cooler.tscn" id="2_8lh5x"]
+
+[node name="DeviceShop" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -50.0
+offset_right = 82.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="Control" type="Control" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Heater" parent="MarginContainer/GridContainer/Control" instance=ExtResource("1_bfki1")]
+position = Vector2(30, 30)
+enabled = false
+
+[node name="Control2" type="Control" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Cooler" parent="MarginContainer/GridContainer/Control2" instance=ExtResource("2_8lh5x")]
+position = Vector2(30, 30)

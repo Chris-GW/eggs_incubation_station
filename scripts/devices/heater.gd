@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var egg_effect_area_2d: Area2D = $EggEffectArea2D
 @onready var hover_panel_container: PanelContainer = $HoverPanelContainer
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 var effected_eggs: Array[Egg] = []
 
@@ -44,6 +45,7 @@ func set_enabled(_enabled: bool) -> void:
 	enabled = _enabled
 	if is_node_ready():
 		egg_effect_area_2d.visible = enabled
+		point_light_2d.visible = enabled
 
 
 func _on_mouse_entered() -> void:

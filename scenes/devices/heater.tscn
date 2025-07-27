@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bkuwou1loylki" path="res://assets/devices/2d_lights_and_shadows_neutral_point_light.webp" id="4_68slv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ycrt"]
-size = Vector2(52, 52)
+size = Vector2(56, 56)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q1f6a"]
 polygon = PackedVector2Array(-25, -25, -25, 25, 25, 25, 25, -25, 27, -27, 27, 27, -27, 27, -27, -27)
@@ -25,7 +25,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_68slv")
 
 [node name="Outline2D" type="Line2D" parent="."]
-points = PackedVector2Array(-26, -26, 26, -26, 26, 26, -26, 26)
+points = PackedVector2Array(-27, -27, 27, -27, 27, 27, -27, 27)
 closed = true
 width = 2.0
 default_color = Color(1, 0, 0, 1)
@@ -40,12 +40,12 @@ monitorable = false
 
 [node name="Polygon2D" type="Polygon2D" parent="EggEffectArea2D"]
 color = Color(1, 0, 0, 0.196078)
-polygon = PackedVector2Array(-128, -128, -27, -27, 28, -27, 128, -128)
-vertex_colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+polygon = PackedVector2Array(-128, -128, -26, -24, 26, -24, 128, -128)
+vertex_colors = PackedColorArray(1, 0.470588, 0.388235, 0, 1, 0.47451, 0.388235, 1, 1, 0.47451, 0.388235, 1, 1, 0.471333, 0.39, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggEffectArea2D"]
 visible = false
-polygon = PackedVector2Array(32, -32, 128, -128, -128, -128, -32, -32)
+polygon = PackedVector2Array(26, -24, 128, -128, -128, -128, -26, -24)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 1, 0.803922, 1)

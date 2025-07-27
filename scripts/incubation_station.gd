@@ -1,6 +1,8 @@
 class_name IncubationStation
 extends Area2D
 
+signal egg_selection_wanted(incubation_station: IncubationStation)
+
 const AMBIENT_TEMP = 20.0
 const EGG = preload("res://scenes/egg.tscn")
 
@@ -69,8 +71,7 @@ func _on_mouse_exited() -> void:
 
 
 func _on_place_egg_button_pressed() -> void:
-	$CanvasLayer/EggReward.randomize_choices()
-	$CanvasLayer.visible = true
+	egg_selection_wanted.emit(self)
 	$PlaceEggButton.visible = false
 
 
@@ -78,5 +79,3 @@ func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
 	egg = EGG.instantiate()
 	egg.egg_creature = creature
 	$EggPositionMarker.add_child(egg)
-	$CanvasLayer.visible = false
-	$PlaceEggButton.visible = false

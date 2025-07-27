@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj04gpqp0lx15"]
+[gd_scene load_steps=9 format=3 uid="uid://dj04gpqp0lx15"]
 
 [ext_resource type="Script" uid="uid://dqri55g4ymo54" path="res://scripts/incubation_station.gd" id="1_ck6wp"]
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_fqn86"]
 [ext_resource type="PackedScene" uid="uid://dfmpxw6jsmck3" path="res://scenes/egg.tscn" id="2_y04yn"]
 [ext_resource type="Texture2D" uid="uid://0bu6ryyy217l" path="res://assets/eggs/egg_questionmark.png" id="4_psc80"]
-[ext_resource type="PackedScene" uid="uid://d2xwmhitg3r0s" path="res://scenes/shop/egg_reward.tscn" id="4_yplrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y04yn"]
 atlas = ExtResource("1_fqn86")
@@ -111,13 +110,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "growth ticks: 512"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="EggReward" parent="CanvasLayer" instance=ExtResource("4_yplrf")]
-
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="PlaceEggButton" to="." method="_on_place_egg_button_pressed"]
-[connection signal="creature_choosen" from="CanvasLayer/EggReward" to="." method="_on_egg_reward_creature_choosen"]
