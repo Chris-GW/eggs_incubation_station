@@ -80,12 +80,20 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -101.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 39.0
+offset_left = -96.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = 35.0
 grow_horizontal = 0
 text = "Open Shop"
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 440.0
+offset_top = 4.0
+offset_right = 542.0
+offset_bottom = 27.0
+text = "Money: 252 €"
 
 [node name="DeviceShop" parent="CanvasLayer" instance=ExtResource("9_kek77")]
 unique_name_in_owner = true

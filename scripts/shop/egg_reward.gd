@@ -57,9 +57,11 @@ func setup_creature_choice(choice_item: Control, creature: EggCreature) -> void:
 	Temp: %d - %d
 	Light Level: %s
 	Rotations: %d
+	Sell Value: %d
 	""" % [creature.preferred_temp_range.x, creature.preferred_temp_range.y,
 			creature.preferred_light_level,
-			creature.preferred_rotation_interval
+			creature.preferred_rotation_interval,
+			creature.sell_value,
 	]
 	choice_item.get_node("InformationLabel").text = information
 

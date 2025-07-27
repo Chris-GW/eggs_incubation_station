@@ -12,23 +12,25 @@ func _on_close_button_pressed() -> void:
 	self.visible = false
 
 
-
 func _on_heater_button_pressed() -> void:
 	var device := HEATER.instantiate()
 	device_bought.emit(device)
 	self.visible = false
+	Main.money -= 1
 
 
 func _on_cooler_button_pressed() -> void:
 	var device := COOLER.instantiate()
 	device_bought.emit(device)
 	self.visible = false
+	Main.money -= 2
 
 
 func _on_incubator_button_pressed() -> void:
 	var device := INCUBATION_STATION.instantiate()
 	device_bought.emit(device)
 	self.visible = false
+	Main.money -= 3
 
 
 func _on_rotator_button_pressed() -> void:
@@ -39,3 +41,14 @@ func _on_lamp_button_pressed() -> void:
 	var device := HANGING_LAMP.instantiate()
 	device_bought.emit(device)
 	self.visible = false
+	Main.money -= 2
+
+
+func _on_visibility_changed() -> void:
+	if not is_node_ready():
+		return
+	%HeaterButton.disabled = Main.money < 1
+	%CoolerButton.disabled = Main.money < 2
+	%LampButton.disabled = Main.money < 2
+	%RotatorButton.disabled = Main.money < 2
+	%IncubatorButton.disabled = Main.money < 3

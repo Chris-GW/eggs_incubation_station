@@ -167,6 +167,7 @@ stretch_mode = 5
 
 [node name="RotatorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(84, 100)
 layout_mode = 2
 flat = true
@@ -240,6 +241,7 @@ size_flags_vertical = 3
 texture = SubResource("AtlasTexture_8lh5x")
 stretch_mode = 5
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/HeaterButton" to="." method="_on_heater_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/CoolerButton" to="." method="_on_cooler_button_pressed"]

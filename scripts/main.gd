@@ -5,7 +5,9 @@ const EGG = preload("res://scenes/egg.tscn")
 
 @onready var game_tick_timer: Timer = $GameTickTimer
 
-static var money := 1
+static var money := 0
+static var ticks_running := true
+
 var game_ticks := 0
 
 
@@ -19,11 +21,13 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_game_tick_timer_timeout() -> void:
-	get_tree().call_group("devices", "pre_game_tick")
-	get_tree().call_group("devices", "next_game_tick")
-	get_tree().call_group("devices", "post_game_tick")
-	game_ticks += 1
-	%TickLabel.text = "Ticks: %6d" % game_ticks
+	if (ticks_running and not %DeviceShop.visible and not %EggReward.visible):
+		get_tree().call_group("devices", "pre_game_tick")
+		get_tree().call_group("devices", "next_game_tick")
+		get_tree().call_group("devices", "post_game_tick")
+		game_ticks += 1
+		%TickLabel.text = "Ticks: %6d" % game_ticks
+		%MoneyLabel.text = "Money: %3d" % money
 
 
 func _on_open_shop_button_pressed() -> void:
