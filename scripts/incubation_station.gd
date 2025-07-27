@@ -1,10 +1,14 @@
 class_name IncubationStation
 extends Area2D
 
+const AMBIENT_TEMP = 20.0
+
 @export var starting_egg_creature: EggCreature
 
 @onready var egg: Egg = $EggPositionMarker/Egg
 @onready var hover_panel_container: PanelContainer = $HoverPanelContainer
+
+var previous_egg_temp := AMBIENT_TEMP
 
 
 func _ready() -> void:
@@ -17,21 +21,29 @@ func _ready() -> void:
 
 func pre_game_tick() -> void:
 	if egg:
+		egg.age_ticks += 1
 		egg.light_level = EggCreature.LightLevel.DARK
-
+		previous_egg_temp = egg.temperature
+		egg.temperature = AMBIENT_TEMP
 
 func next_game_tick() -> void:
-	if not egg:
-		return
-	egg.age_ticks += 1
-	if egg.is_happy_enough():
-		egg.growth_ticks += 1
-	if egg.is_ready_to_hatch():
-		egg.hatch_egg()
-
+	pass
 
 func post_game_tick() -> void:
+	if egg:
+		apply_temperature_change()
+		if egg.is_happy_enough():
+			egg.growth_ticks += 1
+		if egg.is_ready_to_hatch():
+			egg.hatch_egg()
 	update_hover_info_panel()
+
+
+func apply_temperature_change() -> void:
+	var max_change := egg.egg_creature.heat_rate
+	var difference := egg.temperature - previous_egg_temp
+	if abs(difference) > max_change:
+		egg.temperature = previous_egg_temp + sign(difference) * max_change
 
 
 func update_hover_info_panel() -> void:

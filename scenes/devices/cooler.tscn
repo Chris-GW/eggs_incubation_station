@@ -14,6 +14,7 @@ size = Vector2(64, 64)
 
 [node name="Cooler" type="Area2D" groups=["devices"]]
 script = ExtResource("1_or2mw")
+intensity = 44.0
 
 [node name="Draggable" type="Node2D" parent="." node_paths=PackedStringArray("area_2d", "outline")]
 script = ExtResource("2_jplme")
@@ -55,8 +56,14 @@ shape = SubResource("RectangleShape2D_8ycrt")
 z_index = -2
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EggEffectArea2D"]
-shape = SubResource("RectangleShape2D_8ycrt")
+[node name="Polygon2D" type="Polygon2D" parent="EggEffectArea2D"]
+color = Color(0, 0.466667, 1, 0.196078)
+polygon = PackedVector2Array(-128, -128, -32, -32, 32, -32, 128, -128)
+vertex_colors = PackedColorArray(0, 0.0666666, 1, 0, 0, 0.0666666, 1, 1, 0, 0.0666667, 1, 1, 0, 0.0666666, 1, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggEffectArea2D"]
+visible = false
+polygon = PackedVector2Array(32, -32, 128, -128, -128, -128, -32, -32)
 
 [node name="HoverPanelContainer" type="PanelContainer" parent="."]
 visible = false

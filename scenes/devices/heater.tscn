@@ -14,6 +14,7 @@ size = Vector2(64, 64)
 
 [node name="Heater" type="Area2D" groups=["devices"]]
 script = ExtResource("1_yh6gp")
+intensity = 44.0
 
 [node name="Draggable" type="Node2D" parent="." node_paths=PackedStringArray("area_2d", "outline")]
 script = ExtResource("3_5hecl")
