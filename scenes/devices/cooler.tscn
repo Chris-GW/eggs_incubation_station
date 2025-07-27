@@ -37,6 +37,8 @@ shape = SubResource("RectangleShape2D_8ycrt")
 
 [node name="EggEffectArea2D" type="Area2D" parent="."]
 z_index = -2
+collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="Polygon2D" type="Polygon2D" parent="EggEffectArea2D"]

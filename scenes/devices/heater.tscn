@@ -36,6 +36,8 @@ shape = SubResource("RectangleShape2D_8ycrt")
 
 [node name="EggEffectArea2D" type="Area2D" parent="."]
 z_index = -2
+collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="Polygon2D" type="Polygon2D" parent="EggEffectArea2D"]
@@ -56,6 +58,7 @@ texture = ExtResource("4_68slv")
 occluder = SubResource("OccluderPolygon2D_q1f6a")
 
 [node name="HoverPanelContainer" type="PanelContainer" parent="."]
+visible = false
 z_index = 5
 offset_left = 38.0
 offset_top = -38.0

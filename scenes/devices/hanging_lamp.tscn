@@ -67,6 +67,8 @@ texture = ExtResource("3_hwheu")
 [node name="EggEffectArea2D" type="Area2D" parent="."]
 z_index = -2
 position = Vector2(0, 24)
+collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggEffectArea2D"]
@@ -82,9 +84,9 @@ texture = SubResource("AtlasTexture_nvrtj")
 visible = false
 z_index = 5
 offset_left = 38.0
-offset_top = -49.0
+offset_top = -25.0
 offset_right = 185.0
-offset_bottom = 28.0
+offset_bottom = 25.0
 metadata/_edit_group_ = true
 
 [node name="BoxContainer" type="BoxContainer" parent="HoverPanelContainer"]
@@ -102,7 +104,7 @@ text = "Emits light for eggs"
 [node name="IntensityLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Intensity: 65"
+text = "Intensity: 1244 lux"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

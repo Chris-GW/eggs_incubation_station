@@ -13,12 +13,14 @@ config_version=5
 config/name="Eggs Incubation Station"
 run/main_scene="uid://dfyxn8l8uy0hm"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://b6vl0n5h27ml4"
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
@@ -41,6 +43,7 @@ incubation_station=""
 
 2d_physics/layer_2="egg_layer"
 2d_physics/layer_3="device_layer"
+2d_physics/layer_4="station_layer"
 
 [physics]
 

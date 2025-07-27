@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv57jw1jlbgw"]
+[gd_scene load_steps=9 format=3 uid="uid://dv57jw1jlbgw"]
 
-[ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="1_bfki1"]
-[ext_resource type="PackedScene" uid="uid://brnwpac523qw7" path="res://scenes/devices/cooler.tscn" id="2_8lh5x"]
+[ext_resource type="Texture2D" uid="uid://dtrebpgpb5mnh" path="res://assets/devices/egg_heater.png" id="1_bfki1"]
+[ext_resource type="Script" uid="uid://cww3ghktjswwj" path="res://scenes/shop/device_shop.gd" id="1_h1v14"]
+[ext_resource type="Texture2D" uid="uid://wo53ph3a8glk" path="res://assets/devices/egg_cooler.png" id="2_8lh5x"]
+[ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="3_8lh5x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1v14"]
+atlas = ExtResource("3_8lh5x")
+region = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f564"]
+atlas = ExtResource("3_8lh5x")
+region = Rect2(26, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx2al"]
+atlas = ExtResource("3_8lh5x")
+region = Rect2(130, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lh5x"]
+atlas = ExtResource("3_8lh5x")
+region = Rect2(78, 0, 26, 26)
 
 [node name="DeviceShop" type="PanelContainer"]
 anchors_preset = 8
@@ -15,6 +33,7 @@ offset_right = 82.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_h1v14")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -23,23 +42,207 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "___Shoop___"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "close"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 3
+columns = 2
 
-[node name="Control" type="Control" parent="MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+[node name="HeaterButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 100)
 layout_mode = 2
+flat = true
 
-[node name="Heater" parent="MarginContainer/GridContainer/Control" instance=ExtResource("1_bfki1")]
-position = Vector2(30, 30)
-enabled = false
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/HeaterButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Control2" type="Control" parent="MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/HeaterButton/VBoxContainer"]
 layout_mode = 2
+text = "Heater
+1 €"
+horizontal_alignment = 1
 
-[node name="Cooler" parent="MarginContainer/GridContainer/Control2" instance=ExtResource("2_8lh5x")]
-position = Vector2(30, 30)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/HeaterButton/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_bfki1")
+stretch_mode = 5
+
+[node name="CoolerButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 100)
+layout_mode = 2
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/CoolerButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/CoolerButton/VBoxContainer"]
+layout_mode = 2
+text = "Cooler
+2 €"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/CoolerButton/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_8lh5x")
+stretch_mode = 5
+
+[node name="IncubatorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 100)
+layout_mode = 2
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/IncubatorButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/IncubatorButton/VBoxContainer"]
+layout_mode = 2
+text = "Incubator
+3 €"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/IncubatorButton/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_h1v14")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/IncubatorButton/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_3f564")
+stretch_mode = 5
+
+[node name="RotatorButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 100)
+layout_mode = 2
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/RotatorButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/RotatorButton/VBoxContainer"]
+layout_mode = 2
+text = "Rotator
+2 €"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/RotatorButton/VBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_h1v14")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/RotatorButton/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "???"
+horizontal_alignment = 1
+
+[node name="LampButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/LampButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/LampButton/VBoxContainer"]
+layout_mode = 2
+text = "Lamp
+2 €"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/LampButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/LampButton/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_wx2al")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/LampButton/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_8lh5x")
+stretch_mode = 5
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/HeaterButton" to="." method="_on_heater_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/CoolerButton" to="." method="_on_cooler_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/IncubatorButton" to="." method="_on_incubator_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GridContainer/RotatorButton" to="." method="_on_rotator_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LampButton" to="." method="_on_lamp_button_pressed"]

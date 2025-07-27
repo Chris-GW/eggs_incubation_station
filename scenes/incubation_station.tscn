@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqri55g4ymo54" path="res://scripts/incubation_station.gd" id="1_ck6wp"]
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_fqn86"]
+[ext_resource type="Script" uid="uid://dtu8fhapwdl1m" path="res://scripts/devices/draggable.gd" id="2_psc80"]
 [ext_resource type="PackedScene" uid="uid://dfmpxw6jsmck3" path="res://scenes/egg.tscn" id="2_y04yn"]
 [ext_resource type="Texture2D" uid="uid://0bu6ryyy217l" path="res://assets/eggs/egg_questionmark.png" id="4_psc80"]
 [ext_resource type="Texture2D" uid="uid://3o80gnr55ms4" path="res://assets/UI_UX/Egg_Stats/Age.png" id="5_p4a3t"]
@@ -30,6 +31,11 @@ size = Vector2(52, 50)
 [node name="IncubationStation" type="Area2D" groups=["devices", "incubation_station"]]
 script = ExtResource("1_ck6wp")
 
+[node name="Draggable" type="Node2D" parent="." node_paths=PackedStringArray("area_2d", "outline")]
+script = ExtResource("2_psc80")
+area_2d = NodePath("..")
+outline = NodePath("../Outline2D")
+
 [node name="BoxSprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_y04yn")
@@ -46,6 +52,12 @@ position = Vector2(0, -10)
 [node name="EggCoverSprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_yplrf")
+
+[node name="Outline2D" type="Line2D" parent="."]
+points = PackedVector2Array(-27, -27, 27, -27, 27, 25, -27, 25)
+closed = true
+width = 2.0
+default_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
