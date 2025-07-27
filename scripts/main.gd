@@ -4,6 +4,7 @@ extends Node2D
 const EGG = preload("res://scenes/egg.tscn")
 
 @onready var game_tick_timer: Timer = $GameTickTimer
+@onready var audio_listener_2d: AudioListener2D = %AudioListener2D
 
 static var money := 0
 static var ticks_running := true
@@ -13,6 +14,11 @@ var game_ticks := 0
 
 func _ready() -> void:
 	pass
+
+
+func _process(delta: float) -> void:
+	var weight := 1.0 - exp(-30.0 * delta)
+	audio_listener_2d.global_position = audio_listener_2d.global_position.lerp(get_global_mouse_position(), weight)
 
 
 func _physics_process(_delta: float) -> void:

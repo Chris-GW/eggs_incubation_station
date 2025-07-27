@@ -53,6 +53,7 @@ func set_enabled(_enabled: bool) -> void:
 	enabled = _enabled
 	if is_node_ready():
 		point_light_2d.enabled = enabled
+		$SwitchAudioPlayer.play()
 		if should_animate_switch:
 			play_switch_animation(enabled)
 

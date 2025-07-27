@@ -19,6 +19,10 @@ z_index = -20
 position = Vector2(320, 180)
 texture = ExtResource("2_efxa6")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+unique_name_in_owner = true
+current = true
+
 [node name="SpawnArea2D" type="Area2D" parent="." groups=["devices"]]
 position = Vector2(32, 312)
 metadata/_edit_group_ = true

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://m7nn74deuc3m"]
+[gd_scene load_steps=11 format=3 uid="uid://m7nn74deuc3m"]
 
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_aqynv"]
 [ext_resource type="Script" uid="uid://dub3xbounti3x" path="res://scripts/devices/hanging_lamp.gd" id="1_nvrtj"]
 [ext_resource type="Script" uid="uid://dtu8fhapwdl1m" path="res://scripts/devices/draggable.gd" id="2_grgei"]
 [ext_resource type="Texture2D" uid="uid://bkuwou1loylki" path="res://assets/devices/2d_lights_and_shadows_neutral_point_light.webp" id="3_hwheu"]
+[ext_resource type="AudioStream" uid="uid://buxxjdsvrwu0x" path="res://assets/audio/Appliance Switch C.wav" id="5_c1e8u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwheu"]
 atlas = ExtResource("1_aqynv")
@@ -79,6 +80,9 @@ visible = false
 position = Vector2(0, 44)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_nvrtj")
+
+[node name="SwitchAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c1e8u")
 
 [node name="HoverPanelContainer" type="PanelContainer" parent="."]
 visible = false
