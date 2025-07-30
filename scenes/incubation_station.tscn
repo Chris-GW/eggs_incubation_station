@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7xwoymju70oo"]
+[gd_scene load_steps=21 format=3 uid="uid://b7xwoymju70oo"]
 
 [ext_resource type="Script" uid="uid://dqri55g4ymo54" path="res://scripts/incubation_station.gd" id="1_ck6wp"]
 [ext_resource type="Texture2D" uid="uid://0bfoddy6eyib" path="res://assets/eggs/Incubator Color.png" id="1_fqn86"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://0bu6ryyy217l" path="res://assets/eggs/egg_questionmark.png" id="4_psc80"]
 [ext_resource type="Texture2D" uid="uid://3o80gnr55ms4" path="res://assets/UI_UX/Egg_Stats/Age.png" id="5_p4a3t"]
 [ext_resource type="Texture2D" uid="uid://cfukon5gqi66w" path="res://assets/UI_UX/Egg_Stats/Temperature.png" id="6_rggt2"]
+[ext_resource type="Texture2D" uid="uid://dsada5rekhaqj" path="res://assets/UI_UX/button.png" id="6_t0sxt"]
 [ext_resource type="Texture2D" uid="uid://i0dpjo868ugx" path="res://assets/UI_UX/Egg_Stats/Temperature_marker.png" id="7_7moh4"]
+[ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="8_t0sxt"]
 [ext_resource type="Texture2D" uid="uid://do2w2nrvwj27q" path="res://assets/UI_UX/Egg_Stats/Lamp.png" id="8_yanh1"]
 [ext_resource type="Texture2D" uid="uid://dtclbfnauia06" path="res://assets/UI_UX/Egg_Stats/Rotation.png" id="9_6jdl5"]
 [ext_resource type="Texture2D" uid="uid://22832juljqeu" path="res://assets/UI_UX/Egg_Stats/Happy_face.png" id="10_ts02c"]
@@ -28,6 +30,21 @@ region = Rect2(52, 0, 26, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ck6wp"]
 size = Vector2(52, 50)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aexyn"]
+texture = ExtResource("6_t0sxt")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+modulate_color = Color(1, 1, 1, 0.901961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbjq1"]
+font = ExtResource("8_t0sxt")
+font_size = 12
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
 [node name="IncubationStation" type="Area2D" groups=["devices", "incubation_station"]]
 script = ExtResource("1_ck6wp")
 
@@ -45,7 +62,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ck6wp")
 
 [node name="EggPositionMarker" type="Marker2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(0, -12)
 
 [node name="Egg" parent="EggPositionMarker" instance=ExtResource("2_y04yn")]
 
@@ -81,154 +98,135 @@ icon = ExtResource("4_psc80")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Panel" type="Panel" parent="."]
-visible = false
+[node name="HoverPanel" type="PanelContainer" parent="."]
 z_index = 5
-offset_left = 32.0
-offset_top = -150.0
-offset_right = 170.0
-offset_bottom = 62.0
-scale = Vector2(1.2, 1.2)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = -85.0
+offset_right = 215.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_aexyn")
 
-[node name="CreatureLabel" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 134.0
-offset_bottom = 26.0
-text = "Duck"
-horizontal_alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="HoverPanel"]
+layout_mode = 2
+theme_override_constants/separation = -6
 
-[node name="Age" type="TextureRect" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HoverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Age" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer"]
 texture_filter = 1
-layout_mode = 0
-offset_left = 5.0
-offset_top = 26.0
-offset_right = 30.0
-offset_bottom = 52.0
+layout_mode = 2
 texture = ExtResource("5_p4a3t")
+stretch_mode = 5
+
+[node name="AgeLabel" type="Label" parent="HoverPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Age: 631 ticks"
+label_settings = SubResource("LabelSettings_jbjq1")
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="HoverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Temperature" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer1"]
+texture_filter = 3
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_rggt2")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="AgeLabel" type="Label" parent="Panel/Age"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 5.0
-offset_right = 193.0
-offset_bottom = 28.0
-scale = Vector2(0.6, 0.6)
-text = "Age: 631 ticks"
-
-[node name="Temperature" type="TextureRect" parent="Panel"]
-texture_filter = 3
-layout_mode = 0
-offset_left = 1.66667
-offset_top = 35.8333
-offset_right = 96.6667
-offset_bottom = 127.833
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("6_rggt2")
-stretch_mode = 4
-
-[node name="TemperatureLabel" type="Label" parent="Panel/Temperature"]
-layout_mode = 2
-offset_left = 91.6667
-offset_top = 40.625
-offset_right = 176.667
-offset_bottom = 63.625
-scale = Vector2(0.85, 0.85)
-text = "21.5 °C"
-
-[node name="Marker" type="TextureRect" parent="Panel/Temperature"]
-layout_mode = 0
-offset_left = 30.2083
-offset_top = 37.5
-offset_right = 64.2083
-offset_bottom = 71.5
-pivot_offset = Vector2(16.5, 25)
+[node name="Marker" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer1/Temperature"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -22.0
+offset_right = 9.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(9, 13)
 texture = ExtResource("7_7moh4")
 expand_mode = 1
-stretch_mode = 4
 
-[node name="LightLevel" type="TextureRect" parent="Panel"]
+[node name="TemperatureLabel" type="Label" parent="HoverPanel/VBoxContainer/HBoxContainer1"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "21.5 °C"
+label_settings = SubResource("LabelSettings_jbjq1")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HoverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="LightLevel" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer2"]
 texture_filter = 1
-layout_mode = 0
-offset_left = -1.5
-offset_top = 93.0
-offset_right = 32.5
-offset_bottom = 123.0
+layout_mode = 2
 texture = ExtResource("8_yanh1")
-expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="LightLevelLabel" type="Label" parent="Panel/LightLevel"]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 9.0
-offset_right = 207.0
-offset_bottom = 32.0
-scale = Vector2(0.6, 0.6)
+[node name="LightLevelLabel" type="Label" parent="HoverPanel/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "LightLevel: DARK"
+label_settings = SubResource("LabelSettings_jbjq1")
 
-[node name="RotationTimer" type="TextureRect" parent="Panel"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="HoverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="RotationTimer" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer3"]
 texture_filter = 1
-layout_mode = 0
-offset_left = 3.0
-offset_top = 127.0
-offset_right = 26.0
-offset_bottom = 151.0
+layout_mode = 2
 texture = ExtResource("9_6jdl5")
-expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="RotationTimerLabel" type="Label" parent="Panel/RotationTimer"]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 5.0
-offset_right = 157.0
-offset_bottom = 28.0
-scale = Vector2(0.6, 0.6)
+[node name="RotationTimerLabel" type="Label" parent="HoverPanel/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Last Rotation: 12.0 sec"
+label_settings = SubResource("LabelSettings_jbjq1")
 
-[node name="Hapinnes" type="TextureRect" parent="Panel"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="HoverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Hapinnes" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
 texture_filter = 1
-layout_mode = 0
-offset_left = 2.0
-offset_top = 155.0
-offset_right = 27.0
-offset_bottom = 181.0
+layout_mode = 2
 texture = ExtResource("10_ts02c")
-expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="HappinessLabel" type="Label" parent="Panel/Hapinnes"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 5.0
-offset_right = 201.0
-offset_bottom = 28.0
-scale = Vector2(0.6, 0.6)
+[node name="HappinessLabel" type="Label" parent="HoverPanel/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Happiness: 63/100"
+label_settings = SubResource("LabelSettings_jbjq1")
 
-[node name="Growth" type="TextureRect" parent="Panel"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="HoverPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Growth" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer5"]
 texture_filter = 1
-layout_mode = 0
-offset_left = 2.0
-offset_top = 181.0
-offset_right = 27.0
-offset_bottom = 207.0
+layout_mode = 2
 texture = ExtResource("11_5hlw3")
-expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="GrowthLabel" type="Label" parent="Panel/Growth"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 5.0
-offset_right = 201.0
-offset_bottom = 28.0
-scale = Vector2(0.6, 0.6)
+[node name="GrowthLabel" type="Label" parent="HoverPanel/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Growth ticks: 512"
+label_settings = SubResource("LabelSettings_jbjq1")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

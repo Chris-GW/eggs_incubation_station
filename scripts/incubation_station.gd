@@ -9,7 +9,7 @@ const EGG = preload("res://scenes/egg.tscn")
 @export var starting_egg_creature: EggCreature
 
 @onready var egg: Egg = $EggPositionMarker/Egg
-@onready var hover_panel_container: Panel = $Panel
+@onready var hover_panel_container: PanelContainer = $HoverPanel
 
 var previous_egg_temp := AMBIENT_TEMP
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if egg:
-		$Panel/Temperature/Marker.rotation = $EggPositionMarker/Egg.temperature * delta * 3
+		%Marker.rotation = egg.temperature * delta * 3
 	
 	
 func pre_game_tick() -> void:
@@ -63,19 +63,18 @@ func update_hover_info_panel() -> void:
 	if not egg:
 		return
 	
-	$Panel/CreatureLabel.text = egg.egg_creature.name
-	$Panel/Age/AgeLabel.text = "Age: %d ticks" % egg.age_ticks
-	$Panel/Temperature/TemperatureLabel.text = "%0.1d °C" % egg.temperature
-	$Panel/LightLevel/LightLevelLabel.text = "LightLevel: %s" % egg.light_level
-	$Panel/RotationTimer/RotationTimerLabel.text = "Last rotation: %4d ticks" % egg.ticks_since_last_rotation
-	$Panel/Hapinnes/HappinessLabel.text = "Happiness: %2d/100" % egg.happiness
+	%AgeLabel.text = "Age: %d ticks" % egg.age_ticks
+	%TemperatureLabel.text = "%0.1d °C" % egg.temperature
+	%LightLevelLabel.text = EggCreature.light_level_name(egg.light_level)
+	%RotationTimerLabel.text = "Last rotation: %4d ticks" % egg.ticks_since_last_rotation
+	%HappinessLabel.text = "Happiness: %2d/100" % egg.happiness
 	if egg.happiness > 50:
-		$Panel/Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Happy_face.png")
+		%Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Happy_face.png")
 	elif egg.happiness == 50:
-		$Panel/Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Neutral_face.png")
+		%Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Neutral_face.png")
 	else:
-		$Panel/Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Angry_face.png")
-	$Panel/Growth/GrowthLabel.text = "Growth ticks: %4d" % egg.growth_ticks
+		%Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Angry_face.png")
+	%GrowthLabel.text = "Growth ticks: %4d" % egg.growth_ticks
 
 
 func _on_mouse_entered() -> void:

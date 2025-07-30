@@ -7,10 +7,14 @@ const EGG = preload("res://scenes/egg.tscn")
 @onready var audio_listener_2d: AudioListener2D = %AudioListener2D
 
 static var money := 3
-static var unlcked_creatures := 1
 static var ticks_running := true
+static var unlocked_creatures: Dictionary = {}
 
 var game_ticks := 0
+
+
+static func is_unlocked_creature(creature: EggCreature) -> bool:
+	return Main.unlocked_creatures.has(creature.name)
 
 
 func _ready() -> void:
@@ -20,7 +24,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var weight := 1.0 - exp(-30.0 * delta)
 	audio_listener_2d.global_position = audio_listener_2d.global_position.lerp(get_global_mouse_position(), weight)
-	%UnlockedLabel.text = "Unlocked: %2d/12" % unlcked_creatures
 
 
 func _physics_process(_delta: float) -> void:
@@ -34,8 +37,9 @@ func _on_game_tick_timer_timeout() -> void:
 		get_tree().call_group("devices", "next_game_tick")
 		get_tree().call_group("devices", "post_game_tick")
 		game_ticks += 1
-		%TickLabel.text = "Ticks: %6d" % game_ticks
-		%MoneyLabel.text = "Money: %3d €" % money
+		%TickLabel.text = "%3d" % game_ticks
+		%MoneyLabel.text = "%3d" % money
+		%UnlockedLabel.text = "%02d/12" % unlocked_creatures.size()
 
 
 func _on_open_shop_button_pressed() -> void:
@@ -55,6 +59,7 @@ func _on_egg_selection_wanted(incubation_station: IncubationStation) -> void:
 
 func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
 	current_station._on_egg_reward_creature_choosen(creature)
+	%EggReward.visible = false
 
 
 func _on_device_shop_device_bought(device: Node2D) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bb2c5mlyg7sy4"]
+[gd_scene load_steps=15 format=3 uid="uid://bb2c5mlyg7sy4"]
 
 [ext_resource type="Script" uid="uid://dgwv5xib3on4y" path="res://scripts/devices/heater.gd" id="1_yh6gp"]
 [ext_resource type="Script" uid="uid://dtu8fhapwdl1m" path="res://scripts/devices/draggable.gd" id="3_5hecl"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://b6hgkbiv86fb2" path="res://assets/audio/Big Fire Loop 002.wav" id="6_46tip"]
 [ext_resource type="AudioStream" uid="uid://beitjaynagpor" path="res://assets/audio/Heater Cooling Ping.wav" id="6_t4cgb"]
 [ext_resource type="AudioStream" uid="uid://wnvakgc2d32y" path="res://assets/audio/Big Fire Loop 003.wav" id="7_j8u46"]
+[ext_resource type="PackedScene" uid="uid://dxlxsa4cqpp2u" path="res://scenes/devices/device_hover_panel.tscn" id="9_46tip"]
+[ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="10_j8u46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ycrt"]
 size = Vector2(56, 56)
@@ -21,9 +23,16 @@ stream_0/stream = ExtResource("5_08l3b")
 stream_1/stream = ExtResource("6_46tip")
 stream_2/stream = ExtResource("7_j8u46")
 
+[sub_resource type="LabelSettings" id="LabelSettings_rsxbf"]
+font = ExtResource("10_j8u46")
+font_size = 12
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Heater" type="Area2D" groups=["devices"]]
 script = ExtResource("1_yh6gp")
-intensity = 44.0
+intensity = 46.0
 
 [node name="Draggable" type="Node2D" parent="." node_paths=PackedStringArray("area_2d", "outline")]
 script = ExtResource("3_5hecl")
@@ -75,33 +84,16 @@ max_distance = 60.0
 [node name="HeaterSwitchAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_t4cgb")
 
-[node name="HoverPanelContainer" type="PanelContainer" parent="."]
-visible = false
-z_index = 5
-offset_left = 38.0
-offset_top = -38.0
-offset_right = 180.0
-offset_bottom = 39.0
-metadata/_edit_group_ = true
+[node name="HoverPanelContainer" parent="." instance=ExtResource("9_46tip")]
 
-[node name="BoxContainer" type="BoxContainer" parent="HoverPanelContainer"]
-layout_mode = 2
-vertical = true
-
-[node name="NameLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
-layout_mode = 2
-text = "Heater"
-
-[node name="DescriptionLabel2" type="Label" parent="HoverPanelContainer/BoxContainer"]
-layout_mode = 2
-text = "Emits heat to eggs"
-
-[node name="IntensityLabel" type="Label" parent="HoverPanelContainer/BoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Intensity: 65"
+[node name="DescriptionLabel" parent="HoverPanelContainer/MarginContainer/VBoxContainer" index="1"]
+text = "Emits warm air in a cone to raise 
+the temperature of nearby eggs"
+label_settings = SubResource("LabelSettings_rsxbf")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="finished" from="HeaterAudioPlayer" to="." method="_on_heater_audio_player_finished"]
+
+[editable path="HoverPanelContainer"]

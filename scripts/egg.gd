@@ -1,6 +1,8 @@
 class_name Egg
 extends Area2D
 
+signal egg_hatched(egg_creature: EggCreature)
+
 const HATCHING_EGG = preload("res://scenes/hatching_egg.tscn")
 
 @export var egg_creature: EggCreature : set = set_egg_creature
@@ -56,8 +58,12 @@ func hatch_egg() -> void:
 	var hatching_egg := HATCHING_EGG.instantiate()
 	hatching_egg.get_node("UpperEggshellSprite").texture = egg_creature.get_egg_texture(5)
 	hatching_egg.get_node("LowerEggshellSprite").texture = egg_creature.get_egg_texture(6)
-	hatching_egg.get_node("CreatureSprite").texture = egg_creature.get_creature_texture()
+	var creature_sprite: Sprite2D = hatching_egg.get_node("CreatureSprite")
+	creature_sprite.texture = egg_creature.get_creature_texture()
+	creature_sprite.get_node("CPUCoinParticles2D").amount = egg_creature.sell_value
 	self.add_sibling(hatching_egg)
 	hatching_egg.global_position = global_position
-	Main.money += 1
+	Main.money += egg_creature.sell_value
+	Main.unlocked_creatures.set(egg_creature.name, true)
+	egg_hatched.emit(egg_creature)
 	queue_free()

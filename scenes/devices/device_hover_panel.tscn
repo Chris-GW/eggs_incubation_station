@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxlxsa4cqpp2u"]
+
+[ext_resource type="Texture2D" uid="uid://dsada5rekhaqj" path="res://assets/UI_UX/button.png" id="1_18eel"]
+[ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="2_gixkg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rsxbf"]
+texture = ExtResource("1_18eel")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+modulate_color = Color(1, 1, 1, 0.901961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j8u46"]
+font = ExtResource("2_gixkg")
+font_size = 24
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_f7jyx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0.921569, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_46tip"]
+gradient = SubResource("Gradient_f7jyx")
+width = 64
+
+[node name="HoverPanelContainer" type="PanelContainer"]
+z_index = 5
+offset_left = 36.0
+offset_top = -66.0
+offset_right = 280.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rsxbf")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Heater"
+label_settings = SubResource("LabelSettings_j8u46")
+
+[node name="Line" type="TextureRect" parent="MarginContainer/VBoxContainer/NameLabel"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture1D_46tip")
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Emits heat to eggs"
+label_settings = SubResource("LabelSettings_j8u46")
+
+[node name="IntensityLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Intensity: 65"
+label_settings = SubResource("LabelSettings_j8u46")

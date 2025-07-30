@@ -1,6 +1,5 @@
 extends Area2D
 
-@export var intensity: float
 @export var enabled := true : set = set_enabled
 
 @onready var switch_button_sprite_2d: Sprite2D = $SwitchButtonSprite2D
@@ -14,7 +13,6 @@ var effected_eggs: Array[Egg] = []
 func _ready() -> void:
 	set_enabled(enabled)
 	hover_panel_container.visible = false
-	%IntensityLabel.text = "Intensity: %d" % intensity
 
 
 func pre_game_tick() -> void:

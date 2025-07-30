@@ -33,3 +33,8 @@ func get_creature_texture() -> Texture2D:
 
 func get_egg_texture(frame_idx: int = 0) -> Texture2D:
 	return sprites.get_frame_texture("egg", frame_idx)
+
+
+static func light_level_name(light_level: LightLevel) -> String:
+	var light_level_name: String = LightLevel.keys()[light_level]
+	return light_level_name.capitalize()

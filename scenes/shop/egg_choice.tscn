@@ -1,0 +1,189 @@
+[gd_scene load_steps=21 format=3 uid="uid://bcljydvr0vfrd"]
+
+[ext_resource type="Script" uid="uid://de2s2us0otywe" path="res://scripts/shop/egg_choice.gd" id="1_qodtr"]
+[ext_resource type="Texture2D" uid="uid://dsada5rekhaqj" path="res://assets/UI_UX/button.png" id="2_ev7yp"]
+[ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="2_ql4g1"]
+[ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="3_ql4g1"]
+[ext_resource type="Texture2D" uid="uid://db3gu7d6rsodx" path="res://assets/eggs/Colorful.png" id="4_f47aq"]
+[ext_resource type="Texture2D" uid="uid://cxtliepbtfjd6" path="res://assets/eggs/Creatures Color.png" id="5_gchxg"]
+[ext_resource type="Texture2D" uid="uid://c82md6wkhipwi" path="res://assets/UI_UX/Egg_Stats/thermometer.png" id="6_y3d0c"]
+[ext_resource type="FontFile" uid="uid://c5qw4j6h2tlna" path="res://assets/UI_UX/fusion-pixel-10px-proportional-sc-latin-400-normal.woff2" id="7_ebcgm"]
+[ext_resource type="Texture2D" uid="uid://do2w2nrvwj27q" path="res://assets/UI_UX/Egg_Stats/Lamp.png" id="8_mbsm7"]
+[ext_resource type="Texture2D" uid="uid://dtclbfnauia06" path="res://assets/UI_UX/Egg_Stats/Rotation.png" id="9_2vxd2"]
+[ext_resource type="Texture2D" uid="uid://d2snjf77sgjre" path="res://assets/UI_UX/Desenho_2_7_1.png" id="10_dbigc"]
+[ext_resource type="Texture2D" uid="uid://u3mn4govciwn" path="res://assets/UI_UX/Egg_Stats/Growth.png" id="11_67v7t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f47aq"]
+atlas = ExtResource("5_gchxg")
+region = Rect2(0, 64, 18, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_upm36"]
+texture = ExtResource("2_ev7yp")
+texture_margin_left = 8.0
+texture_margin_top = 4.0
+texture_margin_right = 8.0
+texture_margin_bottom = 4.0
+modulate_color = Color(1, 1, 1, 0.901961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5upe"]
+font = ExtResource("3_ql4g1")
+font_size = 24
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ev7yp"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 0.921569, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ccjj"]
+gradient = SubResource("Gradient_ev7yp")
+width = 64
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uwgt"]
+atlas = ExtResource("4_f47aq")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obqpo"]
+atlas = ExtResource("5_gchxg")
+region = Rect2(0, 16, 18, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wpk1e"]
+font = ExtResource("7_ebcgm")
+font_size = 20
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="EggChoiceButton" type="Button"]
+custom_minimum_size = Vector2(148, 256)
+flat = true
+script = ExtResource("1_qodtr")
+egg_creature = ExtResource("2_ql4g1")
+hidden_creature_texture = SubResource("AtlasTexture_f47aq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 148.0
+offset_bottom = 256.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_upm36")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CratureName" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Blue Bird"
+label_settings = SubResource("LabelSettings_m5upe")
+horizontal_alignment = 1
+
+[node name="Line" type="TextureRect" parent="PanelContainer/VBoxContainer/CratureName"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture1D_7ccjj")
+
+[node name="EggCreature" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="EggTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/EggCreature"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6uwgt")
+stretch_mode = 5
+
+[node name="CreatureTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/EggCreature"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_obqpo")
+stretch_mode = 5
+
+[node name="Temperature" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/VBoxContainer/Temperature"]
+layout_mode = 2
+texture = ExtResource("6_y3d0c")
+stretch_mode = 2
+
+[node name="TempLabel" type="Label" parent="PanelContainer/VBoxContainer/Temperature"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "15-24 °C"
+label_settings = SubResource("LabelSettings_wpk1e")
+
+[node name="Light" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/VBoxContainer/Light"]
+layout_mode = 2
+texture = ExtResource("8_mbsm7")
+stretch_mode = 2
+
+[node name="LightLabel" type="Label" parent="PanelContainer/VBoxContainer/Light"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Dark"
+label_settings = SubResource("LabelSettings_wpk1e")
+
+[node name="Rotation" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/VBoxContainer/Rotation"]
+layout_mode = 2
+texture = ExtResource("9_2vxd2")
+stretch_mode = 2
+
+[node name="RotationLabel" type="Label" parent="PanelContainer/VBoxContainer/Rotation"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "15s"
+label_settings = SubResource("LabelSettings_wpk1e")
+
+[node name="MoneyGrowth" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/VBoxContainer/MoneyGrowth"]
+layout_mode = 2
+texture = ExtResource("10_dbigc")
+stretch_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="PanelContainer/VBoxContainer/MoneyGrowth"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "4"
+label_settings = SubResource("LabelSettings_wpk1e")
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/MoneyGrowth"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon2" type="TextureRect" parent="PanelContainer/VBoxContainer/MoneyGrowth"]
+layout_mode = 2
+texture = ExtResource("11_67v7t")
+stretch_mode = 2
+
+[node name="GrowthLabel" type="Label" parent="PanelContainer/VBoxContainer/MoneyGrowth"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "154s"
+label_settings = SubResource("LabelSettings_wpk1e")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
