@@ -5,6 +5,7 @@ const EGG = preload("res://scenes/egg.tscn")
 
 @onready var game_tick_timer: Timer = $GameTickTimer
 @onready var audio_listener_2d: AudioListener2D = %AudioListener2D
+@onready var coin_particles_2d: CPUParticles2D = %CoinParticles2D
 
 static var money := 3
 static var ticks_running := true
@@ -67,6 +68,15 @@ func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
 	%EggReward.visible = false
 
 
-func _on_device_shop_device_bought(device: Node2D) -> void:
+func _on_device_shop_device_bought(device: Node2D, price: int) -> void:
+	Main.money -= price
+	coin_particles_2d.amount = price
 	$Map.add_child(device)
-	device.global_position = %Marker2D.global_position
+	var start_position: Vector2 = %StartMarker2D.global_position
+	var end_position: Vector2 = %EndMarker2D.global_position
+	var tween := create_tween()
+	tween.tween_property(device, "global_position", end_position, 0.4) \
+			.from(start_position) \
+			.set_trans(Tween.TRANS_QUART) \
+			.set_ease(Tween.EASE_OUT)
+	tween.tween_callback(func (): coin_particles_2d.emitting = true)

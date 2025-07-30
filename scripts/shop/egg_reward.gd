@@ -35,3 +35,7 @@ func randomize_choices() -> void:
 
 func _on_creature_choosen(creature: EggCreature) -> void:
 	creature_choosen.emit(creature)
+
+
+func _on_close_button_pressed() -> void:
+	self.visible = false

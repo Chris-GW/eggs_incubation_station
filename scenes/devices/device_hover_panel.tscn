@@ -34,7 +34,7 @@ outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [node name="HoverPanelContainer" type="PanelContainer"]
-z_index = 5
+z_index = 12
 offset_left = 36.0
 offset_top = -66.0
 offset_right = 280.0

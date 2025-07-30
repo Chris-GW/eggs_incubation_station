@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfyxn8l8uy0hm"]
+[gd_scene load_steps=19 format=3 uid="uid://dfyxn8l8uy0hm"]
 
 [ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b7xwoymju70oo" path="res://scenes/incubation_station.tscn" id="2_0xm2m"]
@@ -14,9 +14,25 @@
 [ext_resource type="Texture2D" uid="uid://0bu6ryyy217l" path="res://assets/eggs/egg_questionmark.png" id="11_dg77c"]
 [ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="11_ycdy4"]
 
+[sub_resource type="Curve" id="Curve_ycdy4"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
 font = ExtResource("11_ycdy4")
 font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
+bg_color = Color(0.6, 0, 0, 0.823529)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_vivmo"]
+font = ExtResource("11_ycdy4")
+font_size = 24
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
 font = ExtResource("11_ycdy4")
@@ -38,9 +54,32 @@ current = true
 position = Vector2(32, 312)
 metadata/_edit_group_ = true
 
-[node name="Marker2D" type="Marker2D" parent="SpawnArea2D"]
+[node name="StartMarker2D" type="Marker2D" parent="SpawnArea2D"]
+unique_name_in_owner = true
+position = Vector2(-56, 72)
+
+[node name="EndMarker2D" type="Marker2D" parent="SpawnArea2D"]
 unique_name_in_owner = true
 position = Vector2(8, -8)
+
+[node name="CoinParticles2D" type="CPUParticles2D" parent="SpawnArea2D/EndMarker2D"]
+unique_name_in_owner = true
+z_index = 8
+emitting = false
+amount = 3
+texture = ExtResource("10_dg77c")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.75
+emission_shape = 1
+emission_sphere_radius = 18.0
+particle_flag_align_y = true
+direction = Vector2(0.3, -1)
+spread = 20.0
+gravity = Vector2(0, 245)
+initial_velocity_min = 110.0
+initial_velocity_max = 160.0
+scale_amount_curve = SubResource("Curve_ycdy4")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="SpawnArea2D"]
 polygon = PackedVector2Array(-48, -56, 64, -56, 120, -40, 152, -24, 184, 0, 208, 24, 224, 48, 224, 64, -48, 64)
@@ -88,31 +127,39 @@ volume_db = -12.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DeviceShop" parent="CanvasLayer" instance=ExtResource("9_kek77")]
-unique_name_in_owner = true
-visible = false
-
 [node name="EggReward" parent="CanvasLayer" instance=ExtResource("10_4c57u")]
 unique_name_in_owner = true
 visible = false
 offset_top = -147.5
 offset_bottom = 148.5
 
-[node name="ClearSpawnArea" type="PanelContainer" parent="CanvasLayer"]
+[node name="DeviceShop" parent="CanvasLayer" instance=ExtResource("9_kek77")]
+unique_name_in_owner = true
 visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -516.0
-offset_top = 320.0
-offset_right = -375.0
-offset_bottom = 360.0
-grow_horizontal = 0
+
+[node name="ClearSpawnArea" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -43.0
+offset_right = 326.0
+offset_bottom = 1.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ycdy4")
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/ClearSpawnArea"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ClearSpawnArea"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/ClearSpawnArea/MarginContainer"]
 layout_mode = 2
 text = "Clear pond area!"
+label_settings = SubResource("LabelSettings_vivmo")
 
 [node name="TopBanner" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
@@ -190,6 +237,6 @@ texture = ExtResource("10_dg77c")
 stretch_mode = 2
 
 [connection signal="timeout" from="GameTickTimer" to="." method="_on_game_tick_timer_timeout"]
-[connection signal="device_bought" from="CanvasLayer/DeviceShop" to="." method="_on_device_shop_device_bought"]
 [connection signal="creature_choosen" from="CanvasLayer/EggReward" to="." method="_on_egg_reward_creature_choosen"]
+[connection signal="device_bought" from="CanvasLayer/DeviceShop" to="." method="_on_device_shop_device_bought"]
 [connection signal="pressed" from="CanvasLayer/TopBanner/OpenShopButton" to="." method="_on_open_shop_button_pressed"]

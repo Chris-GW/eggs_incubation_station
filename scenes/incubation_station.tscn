@@ -108,10 +108,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -85.0
-offset_right = 233.0
-offset_bottom = 49.0
+offset_left = 32.0
+offset_top = -68.0
+offset_right = 250.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_aexyn")
@@ -123,8 +123,8 @@ theme_override_constants/separation = -4
 [node name="TemperatureBar" parent="HoverPanel/VBoxContainer" instance=ExtResource("9_t0sxt")]
 unique_name_in_owner = true
 layout_mode = 2
-prefered_temp = Vector2(22, 25)
-value = 80.0
+prefered_temp = Vector2(23, 28)
+value = 38.0
 
 [node name="TempHappiness" type="TextureRect" parent="HoverPanel/VBoxContainer/TemperatureBar"]
 unique_name_in_owner = true

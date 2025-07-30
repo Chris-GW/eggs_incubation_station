@@ -47,11 +47,6 @@ func set_enabled(_enabled: bool) -> void:
 	if is_node_ready():
 		egg_effect_area_2d.visible = enabled
 		point_light_2d.visible = enabled
-		$HeaterSwitchAudioPlayer.play()
-		if enabled:
-			$HeaterAudioPlayer.play()
-		else:
-			$HeaterAudioPlayer.stop()
 
 
 func _on_mouse_entered() -> void:
@@ -68,6 +63,9 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				and event.button_index == MOUSE_BUTTON_RIGHT 
 				and event.is_pressed()):
 		enabled = !enabled
+		$HeaterSwitchAudioPlayer.play()
+		if enabled: $HeaterAudioPlayer.play()
+		else:		$HeaterAudioPlayer.stop()
 
 
 func _on_heater_audio_player_finished() -> void:

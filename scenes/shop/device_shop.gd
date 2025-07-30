@@ -1,6 +1,6 @@
 extends Control
 
-signal device_bought(device: Node2D)
+signal device_bought(device: Node2D, price: int)
 
 const COOLER = preload("res://scenes/devices/cooler.tscn")
 const HANGING_LAMP = preload("res://scenes/devices/hanging_lamp.tscn")
@@ -14,23 +14,20 @@ func _on_close_button_pressed() -> void:
 
 func _on_heater_button_pressed() -> void:
 	var device := HEATER.instantiate()
-	device_bought.emit(device)
+	device_bought.emit(device, 1)
 	self.visible = false
-	Main.money -= 1
 
 
 func _on_cooler_button_pressed() -> void:
 	var device := COOLER.instantiate()
-	device_bought.emit(device)
+	device_bought.emit(device, 2)
 	self.visible = false
-	Main.money -= 2
 
 
 func _on_incubator_button_pressed() -> void:
 	var device := INCUBATION_STATION.instantiate()
-	device_bought.emit(device)
+	device_bought.emit(device, 3)
 	self.visible = false
-	Main.money -= 3
 
 
 func _on_rotator_button_pressed() -> void:
@@ -39,9 +36,8 @@ func _on_rotator_button_pressed() -> void:
 
 func _on_lamp_button_pressed() -> void:
 	var device := HANGING_LAMP.instantiate()
-	device_bought.emit(device)
+	device_bought.emit(device, 2)
 	self.visible = false
-	Main.money -= 2
 
 
 func _on_visibility_changed() -> void:

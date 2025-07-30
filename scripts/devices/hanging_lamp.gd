@@ -47,13 +47,10 @@ func apply_light_to(egg: Egg) -> void:
 
 
 func set_enabled(_enabled: bool) -> void:
-	var should_animate_switch := enabled != _enabled
 	enabled = _enabled
 	if is_node_ready():
 		point_light_2d.enabled = enabled
-		$SwitchAudioPlayer.play()
-		if should_animate_switch:
-			play_switch_animation(enabled)
+		play_switch_animation(enabled)
 
 
 func play_switch_animation(switch_to: bool) -> void:
@@ -75,3 +72,4 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				and event.button_index == MOUSE_BUTTON_RIGHT 
 				and event.is_pressed()):
 		enabled = !enabled
+		$SwitchAudioPlayer.play()

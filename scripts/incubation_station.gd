@@ -113,11 +113,11 @@ func _on_mouse_exited() -> void:
 
 func _on_place_egg_button_pressed() -> void:
 	egg_selection_wanted.emit(self)
-	$PlaceEggButton.visible = false
 
 
 func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
 	egg = EGG.instantiate()
 	egg.egg_creature = creature
 	$EggPositionMarker.add_child(egg)
+	$PlaceEggButton.visible = false
 	%TemperatureBar.prefered_temp = creature.preferred_temp_range
