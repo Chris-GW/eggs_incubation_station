@@ -4,6 +4,9 @@ extends Area2D
 signal egg_hatched(egg_creature: EggCreature)
 
 const HATCHING_EGG = preload("res://scenes/hatching_egg.tscn")
+const HAPPY_FACE = preload("res://assets/UI_UX/Egg_Stats/Happy_face.png")
+const NURTAL_FACE =  preload("res://assets/UI_UX/Egg_Stats/Neutral_face.png")
+const ANGRY_FACE = preload("res://assets/UI_UX/Egg_Stats/Angry_face.png")
 
 @export var egg_creature: EggCreature : set = set_egg_creature
 
@@ -38,6 +41,14 @@ func is_good_temp() -> bool:
 	var min_temp := egg_creature.preferred_temp_range.x
 	var max_temp := egg_creature.preferred_temp_range.y
 	return min_temp <= temperature and temperature <= max_temp
+
+func get_temp_difference() -> float:
+	if temperature < egg_creature.preferred_temp_range.x:
+		return egg_creature.preferred_temp_range.x - temperature
+	elif temperature > egg_creature.preferred_temp_range.y:
+		return temperature - egg_creature.preferred_temp_range.y
+	else:
+		return 0.0
 
 func is_good_light_level() -> bool:
 	return light_level == egg_creature.preferred_light_level

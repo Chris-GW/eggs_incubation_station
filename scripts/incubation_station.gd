@@ -5,6 +5,9 @@ signal egg_selection_wanted(incubation_station: IncubationStation)
 
 const AMBIENT_TEMP = 20.0
 const EGG = preload("res://scenes/egg.tscn")
+const HAPPY_FACE = preload("res://assets/UI_UX/Egg_Stats/Happy_face.png")
+const NURTAL_FACE =  preload("res://assets/UI_UX/Egg_Stats/Neutral_face.png")
+const ANGRY_FACE = preload("res://assets/UI_UX/Egg_Stats/Angry_face.png")
 
 @export var starting_egg_creature: EggCreature
 
@@ -20,6 +23,7 @@ func _ready() -> void:
 	self.egg_selection_wanted.connect(main._on_egg_selection_wanted)
 	if starting_egg_creature:
 		egg.set_egg_creature(starting_egg_creature)
+		%TemperatureBar.prefered_temp = starting_egg_creature.preferred_temp_range
 	else:
 		$PlaceEggButton.visible = true
 		egg.queue_free()
@@ -62,19 +66,42 @@ func apply_temperature_change() -> void:
 func update_hover_info_panel() -> void:
 	if not egg:
 		return
-	
-	%AgeLabel.text = "Age: %d ticks" % egg.age_ticks
+	update_temp_info()
+	update_light_info()
+	update_rotation_info()
+	%GrowthLabel.text = "%3d / %3d" % [egg.growth_ticks, egg.egg_creature.growth_duration]
+	%AgeLabel.text = "Age: %3d" % egg.age_ticks
+
+
+func update_temp_info() -> void:
 	%TemperatureLabel.text = "%0.1d °C" % egg.temperature
-	%LightLevelLabel.text = EggCreature.light_level_name(egg.light_level)
-	%RotationTimerLabel.text = "Last rotation: %4d ticks" % egg.ticks_since_last_rotation
-	%HappinessLabel.text = "Happiness: %2d/100" % egg.happiness
-	if egg.happiness > 50:
-		%Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Happy_face.png")
-	elif egg.happiness == 50:
-		%Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Neutral_face.png")
+	%TemperatureBar.value = egg.temperature
+	if egg.is_good_temp():
+		%TempHappiness.texture = HAPPY_FACE
+	elif egg.get_temp_difference() <= 4.0:
+		%TempHappiness.texture = NURTAL_FACE
 	else:
-		%Hapinnes.texture = preload("res://assets/UI_UX/Egg_Stats/Angry_face.png")
-	%GrowthLabel.text = "Growth ticks: %4d" % egg.growth_ticks
+		%TempHappiness.texture = ANGRY_FACE
+
+
+func update_light_info() -> void:
+	var light_level := EggCreature.light_level_name(egg.light_level)
+	var prefered_light_level := EggCreature.light_level_name(egg.egg_creature.preferred_light_level)
+	%LightLevelLabel.text = light_level + " / " + prefered_light_level
+	if egg.is_good_light_level():
+		%LightHappiness.texture = HAPPY_FACE
+	elif egg.light_level == EggCreature.LightLevel.DIMM:
+		%LightHappiness.texture = NURTAL_FACE
+	else:
+		%LightHappiness.texture = ANGRY_FACE
+
+
+func update_rotation_info() -> void:
+	%RotationTimerLabel.text = "Last rotation: %3d ticks" % egg.ticks_since_last_rotation
+	if randf() < 0.7:
+		%RotationHappiness.texture = HAPPY_FACE
+	else:
+		%RotationHappiness.texture = NURTAL_FACE
 
 
 func _on_mouse_entered() -> void:
@@ -93,3 +120,4 @@ func _on_egg_reward_creature_choosen(creature: EggCreature) -> void:
 	egg = EGG.instantiate()
 	egg.egg_creature = creature
 	$EggPositionMarker.add_child(egg)
+	%TemperatureBar.prefered_temp = creature.preferred_temp_range

@@ -16,7 +16,7 @@ atlas = ExtResource("1_aqynv")
 region = Rect2(130, 0, 78, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqynv"]
-size = Vector2(36, 102)
+size = Vector2(34, 100)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hwheu"]
 polygon = PackedVector2Array(-22, 48, -22, 38, -20, 34, -18, 28, -16, 24, -14, 20, -12, 16, -9, 14, -4, 12, 4, 12, 10, 14, 12, 16, 14, 20, 16, 24, 18, 28, 20, 34, 22, 38, 22, 48, 20, 48, 20, 38, 18, 34, 16, 28, 14, 24, 12, 20, 10, 16, 4, 14, -4, 14, -10, 16, -12, 20, -14, 24, -16, 28, -18, 34, -20, 38, -20, 48)
@@ -85,6 +85,7 @@ texture = SubResource("AtlasTexture_nvrtj")
 stream = ExtResource("5_c1e8u")
 
 [node name="HoverPanelContainer" parent="." instance=ExtResource("6_b2hxj")]
+visible = false
 offset_left = 41.0
 offset_top = -63.0
 offset_right = 289.0

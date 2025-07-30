@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="8_nvg46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ycrt"]
-size = Vector2(56, 56)
+size = Vector2(53, 53)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y3bqr"]
 polygon = PackedVector2Array(-25, -25, -25, 25, 25, 25, 25, -25, 27, -27, 27, 27, -27, 27, -27, -27)
@@ -43,7 +43,7 @@ width = 2.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_8ycrt")
 
 [node name="EggEffectArea2D" type="Area2D" parent="."]
@@ -78,6 +78,7 @@ max_distance = 64.0
 stream = ExtResource("6_utsdt")
 
 [node name="HoverPanelContainer" parent="." instance=ExtResource("7_unlta")]
+visible = false
 
 [node name="NameLabel" parent="HoverPanelContainer/MarginContainer/VBoxContainer" index="0"]
 text = "Cooler"

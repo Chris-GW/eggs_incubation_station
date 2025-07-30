@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxlxsa4cqpp2u"]
+[gd_scene load_steps=8 format=3 uid="uid://dxlxsa4cqpp2u"]
 
 [ext_resource type="Texture2D" uid="uid://dsada5rekhaqj" path="res://assets/UI_UX/button.png" id="1_18eel"]
 [ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="2_gixkg"]
@@ -25,6 +25,13 @@ colors = PackedColorArray(1, 1, 0.921569, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_46tip"]
 gradient = SubResource("Gradient_f7jyx")
 width = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_18eel"]
+font = ExtResource("2_gixkg")
+font_size = 12
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HoverPanelContainer" type="PanelContainer"]
 z_index = 5
@@ -65,7 +72,7 @@ texture = SubResource("GradientTexture1D_46tip")
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Emits heat to eggs"
-label_settings = SubResource("LabelSettings_j8u46")
+label_settings = SubResource("LabelSettings_18eel")
 
 [node name="IntensityLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

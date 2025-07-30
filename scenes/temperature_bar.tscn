@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvb08px0uqdw6"]
+
+[ext_resource type="Script" uid="uid://u7q5phb5gtnm" path="res://scripts/temperature_bar.gd" id="1_shw5h"]
+[ext_resource type="Texture2D" uid="uid://cuugdw168a4wr" path="res://assets/UI_UX/Egg_Stats/temperature_bar.png" id="1_so43g"]
+[ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="2_rwv0t"]
+[ext_resource type="FontFile" uid="uid://c5qw4j6h2tlna" path="res://assets/UI_UX/fusion-pixel-10px-proportional-sc-latin-400-normal.woff2" id="2_shw5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbjq1"]
+atlas = ExtResource("1_so43g")
+region = Rect2(0, 32, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aexyn"]
+atlas = ExtResource("1_so43g")
+region = Rect2(0, 0, 44, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hxmw"]
+atlas = ExtResource("1_so43g")
+region = Rect2(26, 64, 10, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbjx1"]
+font = ExtResource("2_shw5h")
+font_size = 20
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbjq1"]
+font = ExtResource("2_rwv0t")
+font_size = 12
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="TemperatureBar" type="Control"]
+custom_minimum_size = Vector2(128, 42)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_shw5h")
+prefered_temp = Vector2(23, 25)
+value = 72.0
+
+[node name="HotTemperature" type="TextureProgressBar" parent="."]
+texture_filter = 3
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+min_value = 40.0
+max_value = 80.0
+value = 42.0
+nine_patch_stretch = true
+stretch_margin_left = 24
+stretch_margin_top = 4
+stretch_margin_right = 16
+stretch_margin_bottom = 4
+texture_under = SubResource("AtlasTexture_jbjq1")
+texture_progress = SubResource("AtlasTexture_jbjq1")
+tint_under = Color(0.941176, 0.227451, 0.0901961, 1)
+tint_progress = Color(0.6, 0.898039, 0.313726, 1)
+
+[node name="ColdTemperature" type="TextureProgressBar" parent="."]
+texture_filter = 3
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+min_value = 40.0
+max_value = 80.0
+value = 40.0
+nine_patch_stretch = true
+stretch_margin_left = 24
+stretch_margin_top = 4
+stretch_margin_right = 16
+stretch_margin_bottom = 4
+texture_over = SubResource("AtlasTexture_aexyn")
+texture_progress = SubResource("AtlasTexture_jbjq1")
+tint_progress = Color(0.192157, 0.823529, 0.968627, 1)
+
+[node name="Cursor" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 1
+offset_left = 507.0
+offset_right = 517.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_8hxmw")
+
+[node name="ValueLabel" type="Label" parent="Cursor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -24.0
+offset_right = 25.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "72 °C"
+label_settings = SubResource("LabelSettings_tbjx1")
+
+[node name="PreferedLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(68, 0)
+layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 92.0
+offset_bottom = 42.0
+text = "23°C - 25°C"
+label_settings = SubResource("LabelSettings_jbjq1")
+horizontal_alignment = 1

@@ -12,7 +12,7 @@
 [ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="10_j8u46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ycrt"]
-size = Vector2(56, 56)
+size = Vector2(53, 54)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q1f6a"]
 polygon = PackedVector2Array(-25, -25, -25, 25, 25, 25, 25, -25, 27, -27, 27, 27, -27, 27, -27, -27)
@@ -50,7 +50,7 @@ width = 2.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_8ycrt")
 
 [node name="EggEffectArea2D" type="Area2D" parent="."]
@@ -85,6 +85,7 @@ max_distance = 60.0
 stream = ExtResource("6_t4cgb")
 
 [node name="HoverPanelContainer" parent="." instance=ExtResource("9_46tip")]
+visible = false
 
 [node name="DescriptionLabel" parent="HoverPanelContainer/MarginContainer/VBoxContainer" index="1"]
 text = "Emits warm air in a cone to raise 
