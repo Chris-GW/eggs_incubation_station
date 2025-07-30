@@ -14,7 +14,7 @@ func _ready() -> void:
 	adjust_temp_range()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if cold_temperature.min_value >= value or value >= cold_temperature.max_value:
 		adjust_temp_range()
 	$Cursor/ValueLabel.text = "%2d °C" % value

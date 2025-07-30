@@ -72,6 +72,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_yplrf")
 
 [node name="Outline2D" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(-27, -27, 27, -27, 27, 25, -27, 25)
 closed = true
 width = 2.0

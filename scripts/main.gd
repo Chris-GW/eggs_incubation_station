@@ -18,7 +18,12 @@ static func is_unlocked_creature(creature: EggCreature) -> bool:
 
 
 func _ready() -> void:
-	pass
+	call_deferred("enter_fullscreen")
+
+
+func enter_fullscreen() -> void:
+	if not OS.is_debug_build():
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
 func _process(delta: float) -> void:
