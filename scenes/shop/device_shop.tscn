@@ -70,6 +70,15 @@ offset_right = 386.0
 offset_bottom = 324.0
 flat = true
 
+[node name="ColorRect" type="ColorRect" parent="RotatorButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.84956, 3.29696e-06, 1.54018e-06, 0.415686)
+
 [node name="LampButton" type="Button" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(62, 224)

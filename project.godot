@@ -18,13 +18,14 @@ config/version="2.0"
 run/main_scene="uid://dfyxn8l8uy0hm"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://b6vl0n5h27ml4"
-config/icon="res://icon.svg"
-config/windows_native_icon="res://icon.ico"
+config/icon="res://assets/UI_UX/Logo/icon.svg"
+config/windows_native_icon="res://assets/UI_UX/Logo/icon.ico"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"

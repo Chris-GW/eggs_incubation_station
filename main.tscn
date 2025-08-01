@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b7xwoymju70oo" path="res://scenes/incubation_station.tscn" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://dd8oevjpleq1c" path="res://assets/egg_bg_game_jam_July_2025.png" id="2_efxa6"]
+[ext_resource type="Texture2D" uid="uid://dd8oevjpleq1c" path="res://assets/egg_bg_game.png" id="2_efxa6"]
 [ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://m7nn74deuc3m" path="res://scenes/devices/hanging_lamp.tscn" id="6_7mycd"]
@@ -138,6 +138,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="ClearSpawnArea" type="PanelContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

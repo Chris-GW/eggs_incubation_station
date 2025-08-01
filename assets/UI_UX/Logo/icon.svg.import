@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd8oevjpleq1c"
-path="res://.godot/imported/egg_bg_game_jam_July_2025.png-e19744e91ff91ca9826a4e30459f2a34.ctex"
+uid="uid://hwvdgaxokw01"
+path="res://.godot/imported/icon.svg-fe22a0d1cf2f65cb2ea8247853953a65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/egg_bg_game_jam_July_2025.png"
-dest_files=["res://.godot/imported/egg_bg_game_jam_July_2025.png-e19744e91ff91ca9826a4e30459f2a34.ctex"]
+source_file="res://assets/UI_UX/Logo/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-fe22a0d1cf2f65cb2ea8247853953a65.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

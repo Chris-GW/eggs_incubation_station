@@ -1,0 +1,336 @@
+[gd_scene load_steps=27 format=3 uid="uid://cjwk1q8m6bshq"]
+
+[ext_resource type="Script" uid="uid://jvepttfn2388" path="res://scripts/main.gd" id="1_ibjb5"]
+[ext_resource type="Texture2D" uid="uid://dd8oevjpleq1c" path="res://assets/egg_bg_game.png" id="2_6i3w1"]
+[ext_resource type="Texture2D" uid="uid://d2snjf77sgjre" path="res://assets/UI_UX/Desenho_2_7_1.png" id="3_a6k1l"]
+[ext_resource type="PackedScene" uid="uid://b7xwoymju70oo" path="res://scenes/incubation_station.tscn" id="4_7jqc8"]
+[ext_resource type="Resource" uid="uid://igwpka7ehvvf" path="res://scripts/egg_creatures/creature_chicken.tres" id="5_e57ye"]
+[ext_resource type="Resource" uid="uid://c35pt4ul6cio6" path="res://scripts/egg_creatures/creature_blue_bird.tres" id="6_munju"]
+[ext_resource type="Resource" uid="uid://bwktrexbf7wh3" path="res://scripts/egg_creatures/creature_bison.tres" id="7_njc58"]
+[ext_resource type="Resource" uid="uid://csfa5ycjyk53i" path="res://scripts/egg_creatures/creature_turtle.tres" id="8_woeut"]
+[ext_resource type="Resource" uid="uid://dhi1bo865vbjj" path="res://scripts/egg_creatures/creature_cat.tres" id="9_oqd80"]
+[ext_resource type="Resource" uid="uid://xfb8qlmbupqj" path="res://scripts/egg_creatures/creature_fish.tres" id="10_a6t3d"]
+[ext_resource type="PackedScene" uid="uid://bb2c5mlyg7sy4" path="res://scenes/devices/heater.tscn" id="11_giqmh"]
+[ext_resource type="PackedScene" uid="uid://brnwpac523qw7" path="res://scenes/devices/cooler.tscn" id="12_5ryvk"]
+[ext_resource type="PackedScene" uid="uid://m7nn74deuc3m" path="res://scenes/devices/hanging_lamp.tscn" id="13_ekv6h"]
+[ext_resource type="FontFile" uid="uid://cep3foox6k0yn" path="res://assets/UI_UX/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2" id="14_4gtk5"]
+[ext_resource type="PackedScene" uid="uid://d2xwmhitg3r0s" path="res://scenes/shop/egg_reward.tscn" id="15_553cm"]
+[ext_resource type="PackedScene" uid="uid://dv57jw1jlbgw" path="res://scenes/shop/device_shop.tscn" id="16_1f8un"]
+[ext_resource type="Texture2D" uid="uid://v3empybkbftc" path="res://assets/UI_UX/egg_shop_btn.png" id="17_iu1rp"]
+[ext_resource type="Texture2D" uid="uid://0bu6ryyy217l" path="res://assets/eggs/egg_questionmark.png" id="18_7x5gk"]
+[ext_resource type="Texture2D" uid="uid://8dmppd03rdmh" path="res://assets/UI_UX/Logo/game_title_font.png" id="19_1vn3a"]
+
+[sub_resource type="Curve" id="Curve_ycdy4"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
+font = ExtResource("14_4gtk5")
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycdy4"]
+bg_color = Color(0.6, 0, 0, 0.823529)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_vivmo"]
+font = ExtResource("14_4gtk5")
+font_size = 24
+font_color = Color(1, 1, 0.921569, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w48qg"]
+font = ExtResource("14_4gtk5")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2dnr"]
+bg_color = Color(0.85098, 0.603922, 0.0980392, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.415686)
+shadow_size = 4
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1bg6"]
+font = ExtResource("14_4gtk5")
+font_size = 12
+
+[node name="MainForCover" type="Node2D" groups=["main"]]
+script = ExtResource("1_ibjb5")
+
+[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(320, 180)
+texture = ExtResource("2_6i3w1")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+unique_name_in_owner = true
+current = true
+
+[node name="SpawnArea2D" type="Area2D" parent="." groups=["devices"]]
+position = Vector2(32, 312)
+metadata/_edit_group_ = true
+
+[node name="StartMarker2D" type="Marker2D" parent="SpawnArea2D"]
+unique_name_in_owner = true
+position = Vector2(-56, 72)
+
+[node name="EndMarker2D" type="Marker2D" parent="SpawnArea2D"]
+unique_name_in_owner = true
+position = Vector2(8, -8)
+
+[node name="CoinParticles2D" type="CPUParticles2D" parent="SpawnArea2D/EndMarker2D"]
+unique_name_in_owner = true
+z_index = 8
+emitting = false
+amount = 3
+texture = ExtResource("3_a6k1l")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.75
+emission_shape = 1
+emission_sphere_radius = 18.0
+particle_flag_align_y = true
+direction = Vector2(0.3, -1)
+spread = 20.0
+gravity = Vector2(0, 245)
+initial_velocity_min = 110.0
+initial_velocity_max = 160.0
+scale_amount_curve = SubResource("Curve_ycdy4")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="SpawnArea2D"]
+polygon = PackedVector2Array(-48, -56, 64, -56, 120, -40, 152, -24, 184, 0, 208, 24, 224, 48, 224, 64, -48, 64)
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="IncubationStation1" parent="Map" instance=ExtResource("4_7jqc8")]
+position = Vector2(496, 250)
+starting_egg_creature = ExtResource("5_e57ye")
+
+[node name="IncubationStation5" parent="Map" instance=ExtResource("4_7jqc8")]
+position = Vector2(496, 174)
+starting_egg_creature = ExtResource("6_munju")
+
+[node name="IncubationStation6" parent="Map" instance=ExtResource("4_7jqc8")]
+position = Vector2(566, 176)
+starting_egg_creature = ExtResource("7_njc58")
+
+[node name="IncubationStation2" parent="Map" instance=ExtResource("4_7jqc8")]
+position = Vector2(208, 192)
+starting_egg_creature = ExtResource("8_woeut")
+
+[node name="IncubationStation4" parent="Map" instance=ExtResource("4_7jqc8")]
+position = Vector2(144, 192)
+starting_egg_creature = ExtResource("9_oqd80")
+
+[node name="IncubationStation3" parent="Map" instance=ExtResource("4_7jqc8")]
+position = Vector2(568, 250)
+starting_egg_creature = ExtResource("10_a6t3d")
+
+[node name="Heater" parent="Map" instance=ExtResource("11_giqmh")]
+position = Vector2(361, 269)
+
+[node name="Heater2" parent="Map" instance=ExtResource("11_giqmh")]
+position = Vector2(280, 269)
+
+[node name="Cooler" parent="Map" instance=ExtResource("12_5ryvk")]
+position = Vector2(570, 326)
+
+[node name="Cooler2" parent="Map" instance=ExtResource("12_5ryvk")]
+position = Vector2(496, 326)
+
+[node name="HangingLamp" parent="Map" instance=ExtResource("13_ekv6h")]
+position = Vector2(504, 52)
+
+[node name="HangingLamp2" parent="Map" instance=ExtResource("13_ekv6h")]
+position = Vector2(320, 52)
+
+[node name="GameTickTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="TickLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 46.0
+offset_bottom = 24.0
+text = "165"
+label_settings = SubResource("LabelSettings_ycdy4")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.625597, 0.625597, 0.625597, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -12.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EggReward" parent="CanvasLayer" instance=ExtResource("15_553cm")]
+unique_name_in_owner = true
+visible = false
+offset_top = -147.5
+offset_bottom = 148.5
+
+[node name="DeviceShop" parent="CanvasLayer" instance=ExtResource("16_1f8un")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ClearSpawnArea" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -43.0
+offset_right = 326.0
+offset_bottom = 1.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ycdy4")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ClearSpawnArea"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/ClearSpawnArea/MarginContainer"]
+layout_mode = 2
+text = "Clear pond area!"
+label_settings = SubResource("LabelSettings_vivmo")
+
+[node name="TopBanner" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -99.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 113.0
+grow_horizontal = 0
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="OpenShopButton" type="Button" parent="CanvasLayer/TopBanner"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(91, 34)
+layout_mode = 2
+size_flags_horizontal = 8
+flat = true
+
+[node name="ShopButtonTextureRect" type="TextureRect" parent="CanvasLayer/TopBanner/OpenShopButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -15.5
+offset_right = 45.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_iu1rp")
+stretch_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/TopBanner"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="UnlockedLabel" type="Label" parent="CanvasLayer/TopBanner/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10/12"
+label_settings = SubResource("LabelSettings_w48qg")
+horizontal_alignment = 2
+
+[node name="EggTextureRect" type="TextureRect" parent="CanvasLayer/TopBanner/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("18_7x5gk")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopBanner"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/TopBanner/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+label_settings = SubResource("LabelSettings_w48qg")
+horizontal_alignment = 2
+
+[node name="CoinTextureRect" type="TextureRect" parent="CanvasLayer/TopBanner/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_a6k1l")
+stretch_mode = 2
+
+[node name="RunGame" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h2dnr")
+
+[node name="Label" type="Label" parent="CanvasLayer/RunGame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -9.0
+offset_right = 26.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Run Game"
+label_settings = SubResource("LabelSettings_f1bg6")
+
+[node name="GameTitleSprite1" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(236, 41)
+scale = Vector2(0.764412, 0.764412)
+texture = ExtResource("19_1vn3a")
+region_enabled = true
+region_rect = Rect2(0, 0, 604, 96)
+
+[node name="GameTitleSprite2" type="Sprite2D" parent="CanvasLayer/GameTitleSprite1"]
+position = Vector2(0, 98.4656)
+texture = ExtResource("19_1vn3a")
+region_enabled = true
+region_rect = Rect2(0, 112, 604, 87)
+
+[connection signal="timeout" from="GameTickTimer" to="." method="_on_game_tick_timer_timeout"]
+[connection signal="creature_choosen" from="CanvasLayer/EggReward" to="." method="_on_egg_reward_creature_choosen"]
+[connection signal="device_bought" from="CanvasLayer/DeviceShop" to="." method="_on_device_shop_device_bought"]
+[connection signal="pressed" from="CanvasLayer/TopBanner/OpenShopButton" to="." method="_on_open_shop_button_pressed"]

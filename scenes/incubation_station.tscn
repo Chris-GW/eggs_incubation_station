@@ -110,7 +110,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 32.0
 offset_top = -68.0
-offset_right = 250.0
+offset_right = 230.0
 offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -212,7 +212,7 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Last Rotation: 12.0 sec"
+text = "Last rotation: 12.0"
 label_settings = SubResource("LabelSettings_jbjq1")
 
 [node name="RotationHappiness" type="TextureRect" parent="HoverPanel/VBoxContainer/HBoxContainer3"]

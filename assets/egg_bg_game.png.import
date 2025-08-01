@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6vl0n5h27ml4"
-path="res://.godot/imported/egg_incubation_station_cover.png-ad5910785938410e3ee0c9633cfa3449.ctex"
+uid="uid://dd8oevjpleq1c"
+path="res://.godot/imported/egg_bg_game.png-9847a799b4717922e7542b55643982b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/egg_incubation_station_cover.png"
-dest_files=["res://.godot/imported/egg_incubation_station_cover.png-ad5910785938410e3ee0c9633cfa3449.ctex"]
+source_file="res://assets/egg_bg_game.png"
+dest_files=["res://.godot/imported/egg_bg_game.png-9847a799b4717922e7542b55643982b4.ctex"]
 
 [params]
 

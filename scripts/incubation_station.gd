@@ -97,7 +97,7 @@ func update_light_info() -> void:
 
 
 func update_rotation_info() -> void:
-	%RotationTimerLabel.text = "Last rotation: %3d ticks" % egg.ticks_since_last_rotation
+	%RotationTimerLabel.text = "Last rotation: %3d" % egg.ticks_since_last_rotation
 	if randf() < 0.7:
 		%RotationHappiness.texture = HAPPY_FACE
 	else:
